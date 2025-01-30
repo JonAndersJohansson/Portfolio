@@ -1,0 +1,363 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #d76447;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  font-family: "Mordak", sans-serif;
+  font-weight: normal;
+}
+h1 {
+  font-size: 3rem;
+}
+/* .VH {
+  width: 100vh;
+  height: 100vh;
+} */
+.container {
+  width: 80%;
+  margin: 5% auto;
+  margin-bottom: 0;
+  background-color: #f8f8f8;
+  /* border-top: 1px solid #000000; */
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: #d76447;
+}
+
+.header-left {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-right: 5%;
+  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  border-radius: 0 2.5em 0 0; /* Övre höger hörn rundas */
+  border-left: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-top: 2px solid #45839e;
+  box-shadow: 0 -1px 0 0 #000000;
+  gap: 1px;
+}
+.header-right {
+  flex: 2;
+  height: auto;
+  text-align: right;
+  align-self: flex-end; /* Flyttar header-right till botten av flexboxen */
+  padding: 0 0.5%;
+  background: linear-gradient(to bottom, #4b7a8e, #648391);
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  border-top: 2px solid #45839e;
+  box-shadow: 0 -1px 0 0 #000000;
+}
+.header-right h1 {
+  font-size: 1.5rem;
+  color: #45839e;
+  padding-right: 5px;
+}
+.fname,
+.lname,
+.header-right h1 {
+  -webkit-text-stroke: 0.5px black; /* Tunn kantlinje runt texten */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Tunn skugga */
+}
+
+.fname {
+  color: #d24e29;
+  padding-left: 5px;
+}
+
+.lname {
+  color: #45839e;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #d76447; /* Bakgrundsfärg */
+  padding-left: 0px; /* Utrymme runt innehållet */
+  padding-bottom: 2%; /* Utrymme under elementet */
+  border-bottom: 1px solid #000000; /* Linje under navigationslisten */
+}
+.nav ul {
+  display: flex;
+  justify-content: space-between; /* Delar upp elementen i grupper */
+  align-items: center; /* Justerar vertikalt i mitten */
+  list-style: none; /* Tar bort standardpunkterna för listor */
+  padding: 0;
+  margin: 0;
+  gap: 3px; /* Mellanrum mellan elementen */
+}
+.nav li {
+  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  border-width: 1px 1px 1px 1px; /* Top, Right, Bottom, Left */
+  border-style: solid;
+  border-color: black;
+  border-top-color: #4f88a1;
+  border-radius: 0 0 10px 10px;
+  padding: 3px 5px; /* Utrymme runt */
+  display: flex; /* Flexbox för att centrera innehållet */
+  justify-content: center; /* Centrerar innehållet horisontellt */
+  align-items: center; /* Centrerar innehållet vertikalt */
+  height: auto; /* Sätt en höjd för att säkerställa korrekt centrerat innehåll 25px */
+  min-width: auto; /* Valfritt, beroende på design */
+}
+.nav li a {
+  display: flex; /* Flexbox för länken */
+  justify-content: center; /* Centrerar texten horisontellt */
+  align-items: center; /* Centrerar texten vertikalt */
+  text-align: center; /* Justerar texten */
+  height: 100%; /* Tar upp hela höjden av föräldern */
+  width: 100%; /* Tar upp hela bredden av föräldern */
+  font-family: "Mordak", sans-serif;
+  font-weight: normal;
+  text-decoration: none; /* Tar bort understrykning */
+  color: rgb(255, 249, 240); /* Svart färg på texten */
+}
+.nav img {
+  width: 31px; /*20*/
+  margin: 5px, 5px;
+}
+.nav-left {
+  justify-content: left;
+}
+.nav-middle {
+  margin: 0 3px;
+  justify-content: center;
+}
+.nav-right {
+  justify-content: right;
+}
+
+.aside {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  padding: 0px;
+  border-bottom: 1px solid #000000;
+  border-top: 2px solid #4f88a1;
+  font-size: 10px;
+}
+.aside h2 {
+  margin: 0;
+  padding-left: 5px;
+  color: rgb(255, 249, 240);
+}
+
+main {
+  border: 1px solid #000000;
+  border-top: none;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.infoandpic {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #000000;
+}
+.profile-pic {
+  display: flex;
+  flex: 3;
+  justify-content: left;
+  align-items: first baseline;
+}
+.profile-pic img {
+  width: 55%;
+  margin: 10% 0 10% 10%;
+  padding: 5px;
+  border: 1px solid #8f8b8b;
+}
+.main-info {
+  display: flex;
+  padding: 5%;
+  flex: 7;
+}
+.facts-border {
+  width: 100%;
+  flex-wrap: wrap;
+  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  padding: 0px;
+  border-top: 2px solid #4f88a1;
+  border-bottom: 1px solid #000000;
+  font-size: 10px;
+  padding-left: 5px;
+  color: rgb(255, 249, 240);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tre jämnt fördelade kolumner */
+  gap: 20px; /* Utrymme mellan kolumnerna */
+  /* padding: 20px; */
+  width: 100%;
+  justify-content: space-around;
+  margin: 0px 0;
+}
+.facts-column {
+  padding: 15px;
+}
+.facts p {
+  margin-bottom: 5%;
+}
+p.orange {
+  color: #d76447;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* .fact-column {
+    width: 30%;
+    padding: 10px;
+    border: none;
+  } */
+
+.footer {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 0;
+  background-color: #d76447;
+  text-align: right;
+  font-size: 12px;
+  color: #1a3d4b;
+  padding: 1px;
+}
+@font-face {
+  font-family: "Mordak";
+  src: url("font/Mordak Regular.otf") format("opentype");
+}
+
+@media (min-width: 551px) and (max-width: 800px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  .container {
+    width: 90%;
+    margin-top: 5%;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  .header-left {
+    border-radius: 0 2em 0 0; /* Övre höger hörn rundas 3em */
+  }
+  .main-info {
+    padding-left: 3%;
+  }
+  .profile-pic img {
+    width: 75%;
+  }
+}
+@media (min-width: 381px) and (max-width: 550px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  .container {
+    width: 93%;
+    margin-top: 5%;
+  }
+  .header-left {
+    border-radius: 0 1.4em 0 0; /* Övre höger hörn rundas 3em */
+  }
+  .header-right h1 {
+    font-size: 1.1rem;
+  }
+  .nav img {
+    width: 20px; /*20*/
+    margin: 5px, 5px;
+  }
+  p {
+    font-size: 0.7rem;
+  }
+  .main-info {
+    padding-left: 3%;
+  }
+  .nav a {
+    font-size: 0.8rem;
+  }
+  .nav-middle li,
+  .nav-right li {
+    padding: 1px 3px; /* Utrymme runt */
+  }
+  .aside h2,
+  .facts-border h2 {
+    font-size: 0.8rem;
+  }
+  .profile-pic img {
+    width: 75%;
+  }
+}
+@media (max-width: 380px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .header-left {
+    border-radius: 0 1.2em 0 0; /* Övre höger hörn rundas 3em */
+  }
+  .header-right h1 {
+    font-size: 0.9rem;
+  }
+  .container {
+    width: 93%;
+    margin-top: 5%;
+  }
+  p {
+    font-size: 0.5rem;
+  }
+  .main-info {
+    padding-left: 3%;
+  }
+  .nav a {
+    font-size: 0.6rem;
+  }
+  .nav img {
+    width: 17px; /*20*/
+    margin: 5px, 5px;
+  }
+  .aside h2,
+  .facts-border h2 {
+    font-size: 0.7rem;
+  }
+  .profile-pic img {
+    width: 60%;
+    margin: 10px;
+  }
+}
