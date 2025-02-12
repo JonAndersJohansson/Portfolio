@@ -76,11 +76,105 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  // function initGuestbook() {
+  //   const form = document.getElementById("guestbook-form");
+  //   if (!form) return; // Avsluta om gästbok inte finns
+
+  //   const nameInput = document.getElementById("name");
+  //   const messageInput = document.getElementById("message");
+  //   const entriesList = document.getElementById("entries-list");
+
+  //   form.addEventListener("submit", function (event) {
+  //     event.preventDefault();
+
+  //     const name = nameInput.value.trim();
+  //     const message = messageInput.value.trim();
+
+  //     if (name && message) {
+  //       const listItem = document.createElement("li");
+  //       listItem.innerHTML = `<strong>${name}:</strong> ${message}`;
+  //       entriesList.appendChild(listItem);
+
+  //       saveEntry(name, message);
+
+  //       nameInput.value = "";
+  //       messageInput.value = "";
+  //     }
+  //   });
+
+  //   function saveEntry(name, message) {
+  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+  //     entries.push({ name, message });
+  //     localStorage.setItem("guestbook", JSON.stringify(entries));
+  //   }
+
+  //   function loadEntries() {
+  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+  //     entries.forEach((entry) => {
+  //       const listItem = document.createElement("li");
+  //       listItem.innerHTML = `<strong>${entry.name}:</strong> ${entry.message}`;
+  //       entriesList.appendChild(listItem);
+  //     });
+  //   }
+
+  //   loadEntries();
+  // }
+  // function initGuestbook() {
+  //   const form = document.getElementById("guestbook-form");
+  //   if (!form) return; // Avsluta om gästbok inte finns
+
+  //   const nameInput = document.getElementById("name");
+  //   const genderInput = document.getElementById("gender");
+  //   const ageInput = document.getElementById("age");
+  //   const messageInput = document.getElementById("message");
+  //   const entriesList = document.getElementById("entries-list");
+
+  //   form.addEventListener("submit", function (event) {
+  //     event.preventDefault();
+
+  //     const name = nameInput.value.trim();
+  //     const gender = genderInput.value;
+  //     const age = ageInput.value;
+  //     const message = messageInput.value.trim();
+
+  //     if (name && gender && age && message) {
+  //       const listItem = document.createElement("li");
+  //       listItem.innerHTML = `<strong>${name} (${gender}, ${age} år):</strong> ${message}`;
+  //       entriesList.appendChild(listItem);
+
+  //       saveEntry(name, gender, age, message);
+
+  //       nameInput.value = "";
+  //       genderInput.value = "Man";
+  //       ageInput.value = "";
+  //       messageInput.value = "";
+  //     }
+  //   });
+
+  //   function saveEntry(name, gender, age, message) {
+  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+  //     entries.push({ name, gender, age, message });
+  //     localStorage.setItem("guestbook", JSON.stringify(entries));
+  //   }
+
+  //   function loadEntries() {
+  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+  //     entries.forEach((entry) => {
+  //       const listItem = document.createElement("li");
+  //       listItem.innerHTML = `<strong>${entry.name} (${entry.gender}, ${entry.age} år):</strong> ${entry.message}`;
+  //       entriesList.appendChild(listItem);
+  //     });
+  //   }
+
+  //   loadEntries();
+  // }
   function initGuestbook() {
     const form = document.getElementById("guestbook-form");
-    if (!form) return; // Avsluta om gästbok inte finns
+    if (!form) return;
 
     const nameInput = document.getElementById("name");
+    const genderInput = document.getElementById("gender");
+    const ageInput = document.getElementById("age");
     const messageInput = document.getElementById("message");
     const entriesList = document.getElementById("entries-list");
 
@@ -88,35 +182,111 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
 
       const name = nameInput.value.trim();
+      let gender = genderInput.value;
+      const age = ageInput.value;
       const message = messageInput.value.trim();
+      const timestamp = new Date().toISOString(); // Spara tid i ISO-format
 
-      if (name && message) {
+      const genderSymbol = gender === "Man" ? "P" : "F";
+      const profilePic = gender === "Man" ? "pics/him.png" : "pics/her.png";
+
+      if (name && gender && age && message) {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<strong>${name}:</strong> ${message}`;
+        listItem.classList.add("guestbook-entry");
+
+        listItem.innerHTML = `
+                <img src="${profilePic}" alt="${genderSymbol}" class="profile-pic">
+                <div><p class="timestamp">${formatDate(timestamp)}</p></div>
+                <div class="entry-content">
+                    <span class="alias">${name}</span> ${genderSymbol}${age}
+                    <p class="message">${message}</p>
+                </div>
+            `;
+
         entriesList.appendChild(listItem);
+        saveEntry(name, genderSymbol, age, message, profilePic, timestamp);
 
-        saveEntry(name, message);
-
+        // Rensa fält
         nameInput.value = "";
+        genderInput.value = "Man";
+        ageInput.value = "";
         messageInput.value = "";
       }
     });
 
-    function saveEntry(name, message) {
+    function saveEntry(name, gender, age, message, profilePic, timestamp) {
       let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-      entries.push({ name, message });
+      entries.push({ name, gender, age, message, profilePic, timestamp });
       localStorage.setItem("guestbook", JSON.stringify(entries));
     }
 
     function loadEntries() {
       let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+      entriesList.innerHTML = "";
       entries.forEach((entry) => {
         const listItem = document.createElement("li");
-        listItem.innerHTML = `<strong>${entry.name}:</strong> ${entry.message}`;
+        listItem.classList.add("guestbook-entry");
+
+        listItem.innerHTML = `
+                <img src="${entry.profilePic}" alt="${
+          entry.gender
+        }" class="profile-pic">
+                <div class="entry-content">
+                    <p class="timestamp">${formatDate(entry.timestamp)}</p>
+                    <span class="alias">${entry.name}</span> ${entry.gender}${
+          entry.age
+        }
+                    <p class="message">${entry.message}</p>
+                </div>
+            `;
+
         entriesList.appendChild(listItem);
       });
     }
 
     loadEntries();
   }
+
+  // Funktion för att formatera datum
+  function formatDate(date) {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+    const twoDaysAgo = new Date(today);
+    twoDaysAgo.setDate(today.getDate() - 2);
+
+    const entryDate = new Date(date);
+    const entryDay = new Date(
+      entryDate.getFullYear(),
+      entryDate.getMonth(),
+      entryDate.getDate()
+    );
+
+    let formattedDate;
+    if (entryDay.getTime() === today.getTime()) {
+      formattedDate = "Idag";
+    } else if (entryDay.getTime() === yesterday.getTime()) {
+      formattedDate = "Igår";
+    } else if (entryDay.getTime() === twoDaysAgo.getTime()) {
+      formattedDate = "I förrgår";
+    } else {
+      formattedDate = entryDate.toLocaleDateString("sv-SE", {
+        year: "2-digit",
+        month: "2-digit",
+        day: "2-digit",
+      });
+    }
+
+    const formattedTime = entryDate.toLocaleTimeString("sv-SE", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    return `${formattedDate}, kl ${formattedTime}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initGuestbook();
+  });
 });

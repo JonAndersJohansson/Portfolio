@@ -1,17 +1,33 @@
-<aside class="aside"><h2>Gästbok</h2></aside>
+<header class="section-header"><h2>Gästbok</h2></header>
 <section id="guestbook">
-  <form id="guestbook-form">
-    <label for="name">Namn:</label>
-    <input type="text" id="name" required />
-
-    <label for="message">Meddelande:</label>
-    <textarea id="message" required></textarea>
-
-    <button type="submit">Skicka</button>
-  </form>
-
   <div id="guestbook-entries">
-    <h3>Inlägg</h3>
     <ul id="entries-list"></ul>
   </div>
+  <form id="guestbook-form">
+    <header class="section-header"><h2>INLÄGG</h2></header>
+    <div class="alias-container">
+      <label for="name">ALIAS:</label>
+      <input type="text" id="name" required />
+    </div>
+    <div class="gender-age-container">
+      <div class="gender-container">
+        <label for="gender">KÖN:</label>
+        <select id="gender" required>
+          <option value="Man">Man</option>
+          <option value="Kvinna">Kvinna</option>
+        </select>
+      </div>
+      <div class="age-container">
+        <label for="age">ÅLDER:</label>
+        <input type="number" id="age" min="0" required />
+      </div>
+    </div>
+    <div class="message-container">
+      <label for="message">INLÄGG:</label>
+      <textarea id="message" required></textarea>
+    </div>
+    <div class="button-container">
+      <button type="submit">SKICKA INLÄGGET ▶▶▶</button>
+    </div>
+  </form>
 </section>
