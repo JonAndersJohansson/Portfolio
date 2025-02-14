@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadPage("om-mig.html", false);
 
   // Lägg till klickhändelser för navigationslänkar
-  document.querySelectorAll(".nav a").forEach((link) => {
+  document.querySelectorAll("a[data-page]").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       const page = this.getAttribute("data-page");
@@ -76,98 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // function initGuestbook() {
-  //   const form = document.getElementById("guestbook-form");
-  //   if (!form) return; // Avsluta om gästbok inte finns
-
-  //   const nameInput = document.getElementById("name");
-  //   const messageInput = document.getElementById("message");
-  //   const entriesList = document.getElementById("entries-list");
-
-  //   form.addEventListener("submit", function (event) {
-  //     event.preventDefault();
-
-  //     const name = nameInput.value.trim();
-  //     const message = messageInput.value.trim();
-
-  //     if (name && message) {
-  //       const listItem = document.createElement("li");
-  //       listItem.innerHTML = `<strong>${name}:</strong> ${message}`;
-  //       entriesList.appendChild(listItem);
-
-  //       saveEntry(name, message);
-
-  //       nameInput.value = "";
-  //       messageInput.value = "";
-  //     }
-  //   });
-
-  //   function saveEntry(name, message) {
-  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-  //     entries.push({ name, message });
-  //     localStorage.setItem("guestbook", JSON.stringify(entries));
-  //   }
-
-  //   function loadEntries() {
-  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-  //     entries.forEach((entry) => {
-  //       const listItem = document.createElement("li");
-  //       listItem.innerHTML = `<strong>${entry.name}:</strong> ${entry.message}`;
-  //       entriesList.appendChild(listItem);
-  //     });
-  //   }
-
-  //   loadEntries();
-  // }
-  // function initGuestbook() {
-  //   const form = document.getElementById("guestbook-form");
-  //   if (!form) return; // Avsluta om gästbok inte finns
-
-  //   const nameInput = document.getElementById("name");
-  //   const genderInput = document.getElementById("gender");
-  //   const ageInput = document.getElementById("age");
-  //   const messageInput = document.getElementById("message");
-  //   const entriesList = document.getElementById("entries-list");
-
-  //   form.addEventListener("submit", function (event) {
-  //     event.preventDefault();
-
-  //     const name = nameInput.value.trim();
-  //     const gender = genderInput.value;
-  //     const age = ageInput.value;
-  //     const message = messageInput.value.trim();
-
-  //     if (name && gender && age && message) {
-  //       const listItem = document.createElement("li");
-  //       listItem.innerHTML = `<strong>${name} (${gender}, ${age} år):</strong> ${message}`;
-  //       entriesList.appendChild(listItem);
-
-  //       saveEntry(name, gender, age, message);
-
-  //       nameInput.value = "";
-  //       genderInput.value = "Man";
-  //       ageInput.value = "";
-  //       messageInput.value = "";
-  //     }
-  //   });
-
-  //   function saveEntry(name, gender, age, message) {
-  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-  //     entries.push({ name, gender, age, message });
-  //     localStorage.setItem("guestbook", JSON.stringify(entries));
-  //   }
-
-  //   function loadEntries() {
-  //     let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-  //     entries.forEach((entry) => {
-  //       const listItem = document.createElement("li");
-  //       listItem.innerHTML = `<strong>${entry.name} (${entry.gender}, ${entry.age} år):</strong> ${entry.message}`;
-  //       entriesList.appendChild(listItem);
-  //     });
-  //   }
-
-  //   loadEntries();
-  // }
   function initGuestbook() {
     const form = document.getElementById("guestbook-form");
     if (!form) return;
