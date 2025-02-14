@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  height: 100vh;
 }
 
 img {
@@ -58,101 +59,156 @@ p {
 .container {
   width: 70%;
   overflow: visible;
-  margin: 15vh auto 3% auto;
+  margin: 3% auto;
   background-color: #f8f8f8;
 }
 
 .header {
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto; /* grid-template-rows: 1fr auto; */
+  grid-template-columns: auto minmax(10px, 1.5fr) 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "headerbox1 headerbox1 headerbox2"
+    "headerbox3 headerbox4 headerbox5"
+    "headerbox6 headerbox7 headerbox7";
   background-color: #d76447;
 }
 
-#left-top-header {
+#headerbox1 {
+  grid-area: headerbox1;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom, #2f6f8a, #4a798e);
+  background: linear-gradient(to bottom, #306181, #416e8a);
   border-top-right-radius: 100px;
-  border-left: 1px solid #000000;
   border-top: 1px solid #45839e;
-  box-shadow: 0 -1px 0 0 #000000;
   gap: 1px;
+  outline: 1px solid rgb(0, 0, 0);
+  margin-bottom: -1px;
 }
 
-#left-bottom-header {
+#headerbox2 {
+  grid-area: headerbox2;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 0px;
+  position: relative;
+}
+#headerbox3 {
+  grid-area: headerbox3;
+  border-top: 1px solid #45839e;
+  box-shadow: 0 -1px 0 0 #255870;
+  background: linear-gradient(to bottom, #1d5672, #33607f);
+  width: 3vw;
+  position: relative;
+}
+#headerbox3::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: #d76447;
+  border: 1px solid black;
+  overflow: hidden;
+  border-radius: 50%;
+  bottom: -100%; /* Flyttar cirkeln ner så att dess centrum är i boxens hörn */
+  left: -100%; /* Flyttar cirkeln åt vänster så centrum hamnar i boxens hörn */
+
+  clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%, 50% 50%);
+}
+
+#headerbox4 {
+  grid-area: headerbox4;
   display: flex;
   flex-direction: row;
-  background: linear-gradient(to bottom, #4a798e, #648391);
+  background: linear-gradient(to bottom, #1d5672, #33607f);
   border-bottom: 1px solid #000000;
-  border-left: 1px solid #000000;
-  padding: 2% 2% 2% 25%;
+  border-top: 1px solid #4b7993;
+  outline: 1px solid #255870;
+  justify-content: center;
   align-items: center;
 }
 
-#left-bottom-header ul {
+#headerbox4 ul {
   display: flex;
   flex-direction: row;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 20px;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
 }
 
-#left-bottom-header img {
-  width: 35px; /*20*/
+#headerbox4 img {
+  width: 31px;
   margin: 5px, 5px;
 }
-#right-top-header {
-  display: flex;
-  flex: 1;
+.seperator {
+  font-family: "Arial", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
+  font-size: 20px;
+  color: #2e5f7e;
+  opacity: 0.25; /* Gör texten lite genomskinlig */
+  display: inline-block;
+  transform: scaleX(3);
+  text-shadow: 0.1px 0.4px 0.2px rgba(255, 255, 255, 1),
+    /* Skugga nedåt */ -0.1px -0.8px 0.2px rgba(0, 0, 0, 1); /* Ljusare skugga upptill */
+  text-align: center;
 }
-#right-bottom-header {
+
+#headerbox5 {
+  grid-area: headerbox5;
   height: auto;
   text-align: right;
   align-self: flex-end; /* Flyttar header-right till botten av flexboxen */
   padding: 0 0.5%;
-  background: linear-gradient(to bottom, #4a798e, #648391);
+  background: linear-gradient(to bottom, #1d5672, #33607f);
   border-right: 1px solid #000000;
   border-bottom: 1px solid #000000;
   border-top: 1px solid #45839e;
-  box-shadow: 0 -1px 0 0 #000000;
 }
 
-#right-bottom-header h1 {
-  font-size: 3rem;
-  color: #45839e;
+#headerbox5 h1 {
+  font-size: 1.5rem;
+  color: #33607f;
   padding-right: 5px;
-}
-
-.fname,
-.lname,
-#right-bottom-header h1 {
-  -webkit-text-stroke: 0.5px black; /* Tunn kantlinje runt texten */
+  -webkit-text-stroke: 0.6px black; /* Tunn kantlinje runt texten */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Tunn skugga */
+  letter-spacing: -2px;
+}
+#headerbox6 {
+  grid-area: headerbox6;
+}
+#headerbox7 {
+  grid-area: headerbox7;
+  margin-left: -1px;
 }
 
-.fname {
-  color: #d24e29;
+#fname {
+  color: #d76447;
   padding-left: 15px;
   margin-top: -5px;
-  margin-bottom: -30px;
+  margin-bottom: -15px;
+  text-shadow: -1px -1px 0px #d76447d3;
+  letter-spacing: -5px;
+  -webkit-text-stroke: 0.9px black;
+  position: relative;
 }
 
-.lname {
-  color: #45839e;
+#lname {
+  color: #5a88a3;
   padding-right: 40px;
   margin-top: -5px;
-  margin-bottom: -30px;
+  margin-bottom: -15px;
+  text-shadow: -1px -1px 0px #5a88a3;
+  letter-spacing: -5px;
+  -webkit-text-stroke: 0.9px black;
 }
 
 .nav {
   display: flex;
   background-color: #d76447; /* Bakgrundsfärg */
-  padding-left: 0px; /* Utrymme runt innehållet */
-  padding-bottom: 5%; /* Utrymme under elementet */
+  padding-bottom: 2%; /* Utrymme under elementet */
   border-bottom: 1px solid #000000; /* Linje under navigationslisten */
 }
 
@@ -166,7 +222,7 @@ p {
 }
 
 .nav li {
-  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  background-color: #33607f; /* background: linear-gradient(to bottom, #1d5672, #33607f); */
   border-width: 1px 1px 1px 1px; /* Top, Right, Bottom, Left */
   border-style: solid;
   border-color: black;
@@ -198,6 +254,8 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   width: 100%;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
   padding: 0px;
@@ -214,18 +272,20 @@ p {
 }
 
 main {
-  border: 1px solid #000000;
-  border-top: none;
+  background-color: #d76447;
   height: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  padding-left: 3vw;
 }
 .infoandpic {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: space-between; */
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-color: #f8f8f8;
   width: 100%;
   border-bottom: 1px solid #000000;
 }
@@ -246,6 +306,7 @@ main {
 
 .main-info {
   display: flex;
+  background-color: #f8f8f8;
   padding: 5%;
   flex: 7;
 }
@@ -253,8 +314,8 @@ main {
   width: 100%;
   flex-wrap: wrap;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
-  border-top: 1px solid #4f88a1;
-  border-bottom: 1px solid #000000;
+  border: 1px solid black;
+  border-top: 2px solid #4f88a1;
   color: rgb(255, 249, 240);
 }
 
@@ -262,6 +323,9 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tre jämnt fördelade kolumner */
   gap: 20px; /* Utrymme mellan kolumnerna */
+  border: 1px solid black;
+  border-top: none;
+  background-color: #f8f8f8;
   width: 100%;
   justify-content: space-around;
   margin: 0px 0;
@@ -277,12 +341,6 @@ p.orange {
   font-weight: bold;
   margin-bottom: 0;
 }
-
-/* .fact-column {
-    width: 30%;
-    padding: 10px;
-    border: none;
-  } */
 
 .footer {
   width: 100%;
@@ -501,25 +559,19 @@ p.orange {
   p {
     font-size: 0.7rem;
   }
-  .fname,
-  .lname {
-    margin-top: -5px;
-    margin-bottom: -8px;
+  #fname h1,
+  #lname h1 {
+    margin-top: 0px;
+    margin-bottom: -10px;
   }
-  #left-bottom-header {
-    padding-left: 18%;
-  }
-  #left-bottom-header img {
-    width: 20px;
-  }
-  #right-bottom-header h1 {
-    font-size: 1rem;
+  #headerbox4 img {
+    width: 25px;
   }
   .main-info {
     padding-left: 3%;
   }
-  .nav li a {
-    font-size: 0.6rem;
+  .nav a {
+    font-size: 0.8rem;
   }
   .section-header h2,
   .facts-border h2 {
@@ -529,7 +581,14 @@ p.orange {
 
 @media (max-width: 400px) {
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+  }
+
+  #headerbox5 h1 {
+    font-size: 1rem;
+  }
+  #headerbox4 img {
+    width: 20px;
   }
   .container {
     width: 93%;
@@ -562,8 +621,31 @@ p.orange {
   .nav li a {
     font-size: 0.6rem;
   }
-  .section-header h2,
-  .facts-border h2 {
-    font-size: 0.6rem;
+  .me-pic img {
+    width: 80%;
+    margin: 10px;
   }
+}
+/* .fancy-text {
+  position: relative;
+  font-family: "Mordak", sans-serif;
+  font-size: 50px;
+  color: #3a6d8c;
+  display: inline-block;
+}
+
+.text-outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.5);
+  color: transparent;
+} */
+
+.fancy-text {
+  font-family: "Mordak", sans-serif;
+  font-size: 50px;
+  -webkit-text-stroke: 0.9px black; /* Tunn kantlinje runt texten */
+  color: #3a6d8c; /* Originalfärg på texten */
+  text-shadow: -1px -1px 0px rgb(178, 209, 225); /* Ljus kant uppåt/vänster */
 }
