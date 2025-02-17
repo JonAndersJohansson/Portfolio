@@ -172,7 +172,7 @@ p {
   font-size: 3rem;
   color: #33607f;
   padding-right: 10px;
-  -webkit-text-stroke: 0.6px black; /* Tunn kantlinje runt texten */
+  -webkit-text-stroke: 0.5px black; /* Tunn kantlinje runt texten */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Tunn skugga */
   letter-spacing: -2px;
 }
@@ -365,6 +365,18 @@ p.orange {
   border: 1px solid black;
   padding: 20px;
 }
+
+#guestbook-form {
+  display: flex;
+  /* align-self: flex-end; */
+  width: 250px;
+  flex-direction: column;
+  align-self: flex-start;
+  margin-left: auto;
+  gap: 10px;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+}
 .form-header {
   display: flex;
   justify-content: space-between;
@@ -373,16 +385,6 @@ p.orange {
   background: linear-gradient(to bottom, #2f6f8a, #648391);
   padding: 0px;
   border-top: 1px solid #4f88a1;
-}
-
-#guestbook-form {
-  display: flex;
-  width: 250px;
-  flex-direction: column;
-  align-self: flex-start; /* Gör att höjden bara blir så stor som behövs */
-  gap: 10px;
-  border: 1px solid #000000;
-  margin-bottom: 20px;
 }
 #guestbook-form label {
   margin-right: 10px;
@@ -419,7 +421,7 @@ p.orange {
   display: flex;
   justify-content: right;
 }
-#guestbook-form button {
+.submit-button {
   background: #d76447;
   color: #fff;
   border: none;
@@ -442,10 +444,11 @@ p.orange {
 /*--------------------ENTRIES----------------------*/
 
 #guestbook-entries {
-  width: 70%;
-  padding-right: 15px;
-  height: 400px; /* Sätt önskad fast höjd */
-  overflow-y: auto; /* Skapar vertikal scroll om det behövs */
+  height: 310px;
+  overflow-y: auto;
+}
+.inline-p {
+  display: inline;
 }
 
 #entries-list {
@@ -480,6 +483,7 @@ p.orange {
   flex: 1;
 }
 .alias {
+  font-size: 1.2rem;
   font-weight: bold;
   color: #2f6f8a;
 }
@@ -518,8 +522,7 @@ p.orange {
   .nav li a,
   .section-header h2,
   .facts-border h2,
-  .form-header h2,
-  #guestbook-form button {
+  .form-header h2 {
     font-size: 1.3rem;
   }
   #headerbox4 img {
@@ -564,9 +567,14 @@ p.orange {
   .nav li a,
   .section-header h2,
   .facts-border h2,
-  .form-header h2,
-  #guestbook-form button {
+  .form-header h2 {
     font-size: 0.9rem;
+  }
+  .submit-button {
+    font-size: 0.8rem;
+  }
+  .alias {
+    font-size: 1rem;
   }
   .main-info {
     padding-left: 3%;
@@ -618,8 +626,16 @@ p.orange {
   .nav li a,
   .section-header h2,
   .facts-border h2,
-  .form-header h2,
-  #guestbook-form button {
+  .form-header h2 {
+    font-size: 0.7rem;
+  }
+  .submit-button {
+    font-size: 0.8rem;
+  }
+  .alias {
+    font-size: 0.8rem;
+  }
+  #guestbook-form label {
     font-size: 0.7rem;
   }
   /*----------Guestbook----------------*/
@@ -636,7 +652,7 @@ p.orange {
     height: 90vh;
   }
   h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
   .container {
@@ -655,7 +671,7 @@ p.orange {
     letter-spacing: -3px;
   }
   #headerbox4 {
-    padding-left: 18%;
+    padding-left: 3%;
   }
   #headerbox4 img {
     width: 20px;
@@ -677,8 +693,13 @@ p.orange {
   .section-header h2,
   .facts-border h2,
   .form-header h2,
-  #guestbook-form button,
+  .submit-button {
+    font-size: 0.6rem;
+  }
   .alias {
+    font-size: 0.7rem;
+  }
+  #guestbook-form label {
     font-size: 0.6rem;
   }
   /*----------Guestbook----------------*/

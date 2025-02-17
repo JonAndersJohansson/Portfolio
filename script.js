@@ -38,6 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /*---------GÄSTBOK-------------*/
+
+/*--------Byter bild----------*/
+document.addEventListener("DOMContentLoaded", function () {
+  const guestbookImg = document.querySelector(".guestbook-logo");
+
+  guestbookImg.addEventListener("click", function (event) {
+    event.preventDefault(); // Förhindrar att länken följer sin `href`
+    this.src = "pics/guestbook2.png"; // Byter bildkälla
+  });
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   const content = document.getElementById("content");
 
@@ -47,23 +58,25 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!response.ok) throw new Error("Sidan kunde inte laddas");
       const html = await response.text();
       content.innerHTML = html;
+
       if (addToHistory) {
         history.pushState({ page }, "", page);
       }
 
-      // Kör gästbokens funktioner om gästboken laddas
+      // Kör gästboken om referens.html laddas
       if (page === "referens.html") {
-        initGuestbook();
+        setTimeout(initGuestbook, 100);
       }
     } catch (error) {
       content.innerHTML = "<p>Fel vid inläsning av sidan.</p>";
     }
   }
 
-  document.querySelectorAll(".nav a").forEach((link) => {
+  document.querySelectorAll("a[data-page]").forEach((link) => {
     link.addEventListener("click", function (event) {
       event.preventDefault();
       const page = this.getAttribute("data-page");
+
       if (page) {
         loadPage(page);
       }
@@ -86,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const messageInput = document.getElementById("message");
     const entriesList = document.getElementById("entries-list");
 
+    loadEntries(); // Ladda inlägg direkt vid sidladdning
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -93,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let gender = genderInput.value;
       const age = ageInput.value;
       const message = messageInput.value.trim();
-      const timestamp = new Date().toISOString(); // Spara tid i ISO-format
+      const timestamp = new Date().toISOString();
 
       const genderSymbol = gender === "Man" ? "P" : "F";
       const profilePic = gender === "Man" ? "pics/him.png" : "pics/her.png";
@@ -103,98 +118,74 @@ document.addEventListener("DOMContentLoaded", function () {
         listItem.classList.add("guestbook-entry");
 
         listItem.innerHTML = `
-                <img src="${profilePic}" alt="${genderSymbol}" class="profile-pic">
-                <div><p class="timestamp">${formatDate(timestamp)}</p></div>
-                <div class="entry-content">
-                    <span class="alias">${name}</span> ${genderSymbol}${age}
-                    <p class="message">${message}</p>
-                </div>
-            `;
+                  <img src="${profilePic}" alt="${genderSymbol}" class="profile-pic">
+                  <div class="entry-content">
+                      <p class="timestamp">${formatDate(timestamp)}</p>
+                      <span class="alias">${name}</span><p class="inline-p"> ${genderSymbol}${age}</p>
+                      <p class="message">${message}</p>
+                  </div>
+              `;
 
-        entriesList.appendChild(listItem);
         saveEntry(name, genderSymbol, age, message, profilePic, timestamp);
+        entriesList.appendChild(listItem);
 
-        // Rensa fält
         nameInput.value = "";
         genderInput.value = "Man";
         ageInput.value = "";
         messageInput.value = "";
       }
     });
-
-    function saveEntry(name, gender, age, message, profilePic, timestamp) {
-      let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-      entries.push({ name, gender, age, message, profilePic, timestamp });
-      localStorage.setItem("guestbook", JSON.stringify(entries));
-    }
-
-    function loadEntries() {
-      let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
-      entriesList.innerHTML = "";
-      entries.forEach((entry) => {
-        const listItem = document.createElement("li");
-        listItem.classList.add("guestbook-entry");
-
-        listItem.innerHTML = `
-                <img src="${entry.profilePic}" alt="${
-          entry.gender
-        }" class="profile-pic">
-                <div class="entry-content">
-                    <p class="timestamp">${formatDate(entry.timestamp)}</p>
-                    <span class="alias">${entry.name}</span> ${entry.gender}${
-          entry.age
-        }
-                    <p class="message">${entry.message}</p>
-                </div>
-            `;
-
-        entriesList.appendChild(listItem);
-      });
-    }
-
-    loadEntries();
   }
 
-  // Funktion för att formatera datum
+  function saveEntry(name, gender, age, message, profilePic, timestamp) {
+    let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+    entries.push({ name, gender, age, message, profilePic, timestamp });
+    localStorage.setItem("guestbook", JSON.stringify(entries));
+  }
+
+  function loadEntries() {
+    let entries = JSON.parse(localStorage.getItem("guestbook")) || [];
+    const entriesList = document.getElementById("entries-list");
+
+    // Lägg till sparade inlägg, men rensa INTE listan!
+    entries.forEach((entry) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("guestbook-entry");
+
+      listItem.innerHTML = `
+            <img src="${entry.profilePic}" alt="${
+        entry.gender
+      }" class="profile-pic">
+            <div class="entry-content">
+                <p class="timestamp">${formatDate(entry.timestamp)}</p>
+                <span class="alias">${entry.name}</span><p class="inline-p"> ${
+        entry.gender
+      }${entry.age}</p>
+                <p class="message">${entry.message}</p>
+            </div>
+        `;
+
+      entriesList.appendChild(listItem); // Lägg till efter de statiska inläggen
+    });
+  }
+
   function formatDate(date) {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
-    const twoDaysAgo = new Date(today);
-    twoDaysAgo.setDate(today.getDate() - 2);
-
     const entryDate = new Date(date);
-    const entryDay = new Date(
-      entryDate.getFullYear(),
-      entryDate.getMonth(),
-      entryDate.getDate()
-    );
-
-    let formattedDate;
-    if (entryDay.getTime() === today.getTime()) {
-      formattedDate = "Idag";
-    } else if (entryDay.getTime() === yesterday.getTime()) {
-      formattedDate = "Igår";
-    } else if (entryDay.getTime() === twoDaysAgo.getTime()) {
-      formattedDate = "I förrgår";
-    } else {
-      formattedDate = entryDate.toLocaleDateString("sv-SE", {
+    return (
+      entryDate.toLocaleDateString("sv-SE", {
         year: "2-digit",
         month: "2-digit",
         day: "2-digit",
-      });
-    }
-
-    const formattedTime = entryDate.toLocaleTimeString("sv-SE", {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-
-    return `${formattedDate}, kl ${formattedTime}`;
+      }) +
+      ", kl " +
+      entryDate.toLocaleTimeString("sv-SE", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+    );
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  if (window.location.pathname.includes("referens.html")) {
     initGuestbook();
-  });
+  }
 });
