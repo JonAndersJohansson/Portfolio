@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Kör gästbokens funktioner om gästboken laddas
-      if (page === "gastbok.html") {
+      if (page === "referens.html") {
         initGuestbook();
       }
     } catch (error) {

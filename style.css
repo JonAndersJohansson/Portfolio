@@ -258,18 +258,18 @@ p {
   width: 100%;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
   padding: 0px;
-  border-bottom: 1px solid #000000;
   border-top: 1px solid #4f88a1;
-  /* font-size: 10px; */
 }
 
 .nav li a,
 .section-header h2,
-.facts-border h2 {
+.facts-border h2,
+.form-header h2 {
   font-size: 1.8rem;
 }
 .section-header h2,
-.facts-border h2 {
+.facts-border h2,
+.form-header h2 {
   margin: 0;
   padding-left: 10px;
   color: rgb(255, 249, 240);
@@ -287,11 +287,9 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border: 1px solid black;
   background-color: #f8f8f8;
   width: 100%;
-  border-bottom: 1px solid #000000;
 }
 .me-pic {
   display: flex;
@@ -360,21 +358,31 @@ p.orange {
 
 #guestbook {
   display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%;
-  flex-direction: row;
   background: #f8f8f8;
+  border: 1px solid black;
   padding: 20px;
-  border-radius: 10px;
+}
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  padding: 0px;
+  border-top: 1px solid #4f88a1;
 }
 
 #guestbook-form {
   display: flex;
+  width: 250px;
   flex-direction: column;
   align-self: flex-start; /* Gör att höjden bara blir så stor som behövs */
-  width: 30%;
   gap: 10px;
   border: 1px solid #000000;
+  margin-bottom: 20px;
 }
 #guestbook-form label {
   margin-right: 10px;
@@ -509,7 +517,9 @@ p.orange {
   }
   .nav li a,
   .section-header h2,
-  .facts-border h2 {
+  .facts-border h2,
+  .form-header h2,
+  #guestbook-form button {
     font-size: 1.3rem;
   }
   #headerbox4 img {
@@ -553,11 +563,20 @@ p.orange {
   }
   .nav li a,
   .section-header h2,
-  .facts-border h2 {
+  .facts-border h2,
+  .form-header h2,
+  #guestbook-form button {
     font-size: 0.9rem;
   }
   .main-info {
     padding-left: 3%;
+  }
+  /*----------Guestbook----------------*/
+  #guestbook {
+    flex-direction: column-reverse;
+  }
+  #guestbook-form {
+    align-self: flex-end;
   }
 }
 
@@ -598,8 +617,17 @@ p.orange {
   }
   .nav li a,
   .section-header h2,
-  .facts-border h2 {
+  .facts-border h2,
+  .form-header h2,
+  #guestbook-form button {
     font-size: 0.7rem;
+  }
+  /*----------Guestbook----------------*/
+  #guestbook {
+    flex-direction: column-reverse;
+  }
+  #guestbook-form {
+    align-self: flex-end;
   }
 }
 
@@ -647,8 +675,18 @@ p.orange {
   }
   .nav li a,
   .section-header h2,
-  .facts-border h2 {
+  .facts-border h2,
+  .form-header h2,
+  #guestbook-form button,
+  .alias {
     font-size: 0.6rem;
+  }
+  /*----------Guestbook----------------*/
+  #guestbook {
+    flex-direction: column-reverse;
+  }
+  #guestbook-form {
+    align-self: flex-end;
   }
 }
 @media (min-width: 666px) and (max-width: 1024px) {
