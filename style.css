@@ -354,7 +354,7 @@ p.orange {
   padding: 1px 1px 10px 1px;
 }
 
-/*<---------------- Guestbook ---------------------->*/
+/*<---------------- Referens ---------------------->*/
 
 #guestbook {
   display: flex;
@@ -436,12 +436,12 @@ p.orange {
   margin: 0;
   color: rgb(255, 249, 240);
 }
-#guestbook-form label {
+.form-label {
   font-size: 0.8rem;
   font-weight: bold;
   color: #d76447;
 }
-/*--------------------ENTRIES----------------------*/
+/*--------------------Referens entries----------------------*/
 
 #guestbook-entries {
   height: 310px;
@@ -485,6 +485,95 @@ p.orange {
   font-size: 1.2rem;
   font-weight: bold;
   color: #2f6f8a;
+}
+
+/*-------------Kontakt-----------------------------*/
+#contact {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  background-color: #f8f8f8;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+#contact-info {
+  display: flex;
+  flex-direction: column;
+}
+.contact-row {
+  display: flex;
+  flex-direction: row;
+}
+.margin-p {
+  margin-left: 3%;
+}
+#linkedin-weather-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 3%;
+  height: 100%;
+  margin-top: 3%;
+}
+#weather-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  /* border: 1px solid black; */
+  padding: 10px;
+  width: 200px;
+}
+#weather-container p {
+  align-self: center;
+}
+
+#weatherImage {
+  width: 50px;
+  align-self: center;
+}
+
+#linkedin-logo {
+  width: 100px;
+}
+#contact-form {
+  display: flex;
+  align-self: flex-start;
+  margin-left: auto;
+  flex-direction: column;
+  width: 250px;
+  gap: 10px;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+}
+#form-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+#contact-input {
+  display: flex;
+  flex-direction: row;
+  /* width: auto; */
+  margin: 0 3%;
+}
+#contact-message {
+  margin: 0 3%;
+}
+#message {
+  width: 100%;
+}
+/* #mail-icon-container {
+  display: flex;
+  align-items: end;
+} */
+#mail-icon {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  padding-left: 3%;
+  width: 60px;
+  height: auto;
 }
 
 /*<---------------- Media queries ---------------------->*/
@@ -627,7 +716,7 @@ p.orange {
   .alias {
     font-size: 0.8rem;
   }
-  #guestbook-form label {
+  .form-label {
     font-size: 0.7rem;
   }
 }
@@ -684,7 +773,7 @@ p.orange {
   .alias {
     font-size: 0.7rem;
   }
-  #guestbook-form label {
+  .form-label {
     font-size: 0.6rem;
   }
 }
@@ -700,10 +789,12 @@ p.orange {
 }
 @media (max-width: 666px) {
   /*----------Guestbook----------------*/
-  #guestbook {
+  #guestbook,
+  #contact {
     flex-direction: column-reverse;
   }
-  #guestbook-form {
+  #guestbook-form,
+  #contact {
     align-self: flex-end;
   }
 }

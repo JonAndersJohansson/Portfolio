@@ -189,3 +189,107 @@ document.addEventListener("DOMContentLoaded", function () {
     initGuestbook();
   }
 });
+/*----------Fake mail-------------*/
+function skickaForm(event) {
+  event.preventDefault(); // Stoppa formuläret från att ladda om sidan
+
+  // Simulera att formuläret skickas
+  alert("Meddelandet har skickats!");
+
+  // Rensa fälten efter "skickning"
+  document.getElementById("kontaktform").reset();
+}
+
+/*--------------Vädervisare-----------*/
+
+// Funktion för att hämta vädret
+function fetchWeatherData() {
+  console.log("Försöker hämta väder...");
+
+  const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
+  const apiKey = "782c505a0ae937e272fa39f4efffcf53";
+  const lat = "63.25223515574687";
+  const lon = "18.724460092421445";
+
+  const url = `${apiUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=sv`;
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Nätverksrespons var inte ok");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log("API Data:", data);
+
+      const weatherInfo = document.getElementById("weatherInfo");
+      const weatherImage = document.getElementById("weatherImage");
+
+      if (!weatherInfo || !weatherImage) {
+        console.error("Väderelement hittades inte! Väntar på att de laddas...");
+        return;
+      }
+
+      const temperature = data.main.temp;
+      const weatherType = data.weather[0].main;
+
+      weatherInfo.innerHTML = `${temperature}°C.`;
+      // weatherInfo.style.color = temperature < 0 ? "blue" : "red";
+
+      let imageUrl = "";
+      switch (weatherType) {
+        case "Clear":
+          imageUrl = "pics/weather/clear.svg";
+          break;
+        case "Clouds":
+          imageUrl = "pics/weather/cloudy.svg";
+          break;
+        case "Drizzle":
+          imageUrl = "pics/weather/drizzle.svg";
+          break;
+        case "Fog":
+        case "Haze":
+        case "Mist":
+          imageUrl = "pics/weather/foghazemist.svg";
+          break;
+        case "Rain":
+          imageUrl = "pics/weather/rain.svg";
+          break;
+        case "Snow":
+          imageUrl = "pics/weather/snow.svg";
+          break;
+        case "Squall":
+          imageUrl = "pics/weather/squall.svg";
+          break;
+        case "Thunderstorm":
+          imageUrl = "pics/weather/thunder.svg";
+          break;
+        default:
+          imageUrl = "pics/mail.png";
+      }
+
+      weatherImage.src = imageUrl;
+      weatherImage.alt = weatherType;
+    })
+    .catch((error) => {
+      console.error("Det gick inte att hämta väderdata:", error);
+    });
+}
+
+// Lyssna efter när `kontakt.html` laddas in i `#content`
+const observer = new MutationObserver(() => {
+  if (document.getElementById("weatherInfo")) {
+    console.log("Vädersektionen har laddats – hämtar väderdata...");
+    fetchWeatherData();
+    observer.disconnect(); // Stoppa observer när den har hittat väderelementet
+  }
+});
+
+// Starta observer på `#content`
+const content = document.getElementById("content");
+if (content) {
+  observer.observe(content, { childList: true, subtree: true });
+} else {
+  console.error("#content hittades inte!");
+}

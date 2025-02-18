@@ -1,4 +1,49 @@
 <header class="section-header"><h2>Kontakt</h2></header>
-<div class="main-info">
-  <p>Kontaktfomulär</p>
-</div>
+<section id="contact">
+  <div id="contact-info">
+    <div class="contact-row">
+      <p class="alias">Mail:</p>
+      <p class="margin-p">jonjohansson88@gmail.com</p>
+    </div>
+    <div class="contact-row">
+      <p class="alias">Telnr:</p>
+      <p class="margin-p">0703792074</p>
+    </div>
+    <div id="linkedin-weather-container">
+      <a href="https://www.linkedin.com">
+        <img src="pics/linkedin.png" alt="linkedin" id="linkedin-logo" />
+      </a>
+      <div id="weather-container">
+        <p class="alias">Domsjö idag</p>
+        <img id="weatherImage" src="" alt="Väderbild" />
+        <p id="weatherInfo">Hämtar väder...</p>
+      </div>
+    </div>
+  </div>
+  <form
+    id="contact-form"
+    onsubmit="skickaForm(event)"
+    method="post"
+    enctype="text/plain"
+  >
+    <header class="form-header"><h2>KontaktformulÄr</h2></header>
+    <div id="contact-input">
+      <div id="form-column">
+        <label class="form-label" for="namn">Namn:</label>
+        <input type="text" id="namn" name="namn" required />
+
+        <label class="form-label" for="email">E-post:</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <img id="mail-icon" src="pics/mail.png" />
+    </div>
+    <div id="contact-message">
+      <label class="form-label" for="meddelande">Meddelande:</label>
+      <textarea id="message" name="meddelande" rows="5" required></textarea>
+    </div>
+    <div class="button-container">
+      <button class="submit-button" type="submit">Skicka meddelande</button>
+    </div>
+  </form>
+</section>
+<script src="script.js" defer></script>
