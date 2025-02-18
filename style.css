@@ -490,6 +490,45 @@ p.orange {
   font-weight: bold;
   color: #2f6f8a;
 }
+/*-------------PORTFOLIO-----------------------------*/
+#portfolio-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+  border: 1px solid black;
+  padding: 2%;
+}
+#portfolio-header {
+  align-self: center;
+  margin-bottom: 20px;
+}
+.portfolio-box {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+.portfolio-button {
+  background: #d76447;
+  color: #fff;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  width: 140px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #2f6f8a, #648391);
+  padding: 0 5px;
+  border-top: 1px solid #4f88a1;
+  font-size: 1.8rem;
+  font-family: "Mordak", sans-serif;
+  font-weight: normal;
+  color: rgb(255, 249, 240);
+}
+.portfolio-text {
+  margin-left: 30px;
+}
+
 /*-------------Kunskap-----------------------------*/
 #knowledge {
   display: flex;
@@ -634,7 +673,8 @@ p.orange {
   .nav li a,
   .section-header h2,
   .facts-border h2,
-  .form-header h2 {
+  .form-header h2,
+  .portfolio-button {
     font-size: 1.3rem;
   }
   #headerbox4 img {
@@ -679,7 +719,8 @@ p.orange {
   .nav li a,
   .section-header h2,
   .facts-border h2,
-  .form-header h2 {
+  .form-header h2,
+  .portfolio-button {
     font-size: 0.9rem;
   }
   .submit-button {
@@ -731,7 +772,8 @@ p.orange {
   .nav li a,
   .section-header h2,
   .facts-border h2,
-  .form-header h2 {
+  .form-header h2,
+  .portfolio-button {
     font-size: 0.7rem;
   }
   .submit-button {
@@ -791,7 +833,8 @@ p.orange {
   .section-header h2,
   .facts-border h2,
   .form-header h2,
-  .submit-button {
+  .submit-button,
+  .portfolio-button {
     font-size: 0.6rem;
   }
   .alias {
