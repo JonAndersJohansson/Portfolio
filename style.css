@@ -149,8 +149,6 @@ p {
 .seperator {
   font-family: "Arial", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
   font-size: 40px;
-  /* padding-left: 5%;
-  padding-right: 5%; */
   color: #2e5f7e;
   opacity: 0.25; /* Gör texten lite genomskinlig */
   display: inline-block;
@@ -164,7 +162,7 @@ p {
   grid-area: headerbox5;
   height: auto;
   text-align: right;
-  align-self: flex-end; /* Flyttar header-right till botten av flexboxen */
+  align-self: flex-end;
   padding: 0 0.5%;
   background: linear-gradient(to bottom, #1d5672, #33607f);
   border-right: 1px solid #000000;
@@ -176,8 +174,8 @@ p {
   font-size: 3rem;
   color: #33607f;
   padding-right: 10px;
-  -webkit-text-stroke: 0.5px black; /* Tunn kantlinje runt texten */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Tunn skugga */
+  -webkit-text-stroke: 0.5px black;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   letter-spacing: -2px;
 }
 #headerbox6 {
@@ -211,46 +209,46 @@ p {
 
 .nav {
   display: flex;
-  background-color: #d76447; /* Bakgrundsfärg */
-  padding-bottom: 5%; /* Utrymme under elementet */
-  border-bottom: 1px solid #000000; /* Linje under navigationslisten */
+  background-color: #d76447;
+  padding-bottom: 5%;
+  border-bottom: 1px solid #000000;
 }
 
 .nav ul {
   display: flex;
   width: 100%;
-  list-style: none; /* Tar bort standardpunkterna för listor */
+  list-style: none;
   padding: 0;
   margin: 0;
   justify-content: space-between;
 }
 
 .nav li {
-  background-color: #33607f; /* background: linear-gradient(to bottom, #1d5672, #33607f); */
-  border-width: 1px 1px 1px 1px; /* Top, Right, Bottom, Left */
+  background-color: #33607f;
+  border-width: 1px 1px 1px 1px;
   border-style: solid;
   border-color: black;
   border-top-color: #4f88a1;
   border-radius: 0 0 10px 10px;
-  padding: 0px 2%; /* Utrymme runt */
-  display: flex; /* Flexbox för att centrera innehållet */
-  justify-content: center; /* Centrerar innehållet horisontellt */
-  align-items: center; /* Centrerar innehållet vertikalt */
-  height: auto; /* Sätt en höjd för att säkerställa korrekt centrerat innehåll 25px */
-  min-width: auto; /* Valfritt, beroende på design */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  min-width: auto;
 }
 
 .nav li a {
-  display: flex; /* Flexbox för länken */
-  justify-content: center; /* Centrerar texten horisontellt */
-  align-items: center; /* Centrerar texten vertikalt */
-  text-align: center; /* Justerar texten */
-  height: 100%; /* Tar upp hela höjden av föräldern */
-  width: 100%; /* Tar upp hela bredden av föräldern */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
   font-family: "Mordak", "FallbackBold", sans-serif;
   font-weight: normal;
-  text-decoration: none; /* Tar bort understrykning */
-  color: rgb(255, 249, 240); /* Svart färg på texten */
+  text-decoration: none;
+  color: rgb(255, 249, 240);
+  padding: 0px 8px;
 }
 
 .section-header {
@@ -303,8 +301,8 @@ main {
 
 .me-pic img {
   width: 80%;
-  height: auto; /* Bevarar proportionerna */
-  display: block; /* Förhindrar att inline-marginal påverkar */
+  height: auto;
+  display: block;
   border: 1px solid #8f8b8b;
   box-sizing: border-box; /* Säkerställer att border räknas med i storleken */
   margin: 10% 0 10% 10%;
@@ -333,7 +331,7 @@ main {
 .facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tre jämnt fördelade kolumner */
-  gap: 20px; /* Utrymme mellan kolumnerna */
+  gap: 20px;
   border: 1px solid black;
   border-top: none;
   background-color: #f8f8f8;
@@ -377,7 +375,6 @@ p.orange {
 
 #guestbook-form {
   display: flex;
-  /* align-self: flex-end; */
   width: 250px;
   flex-direction: column;
   align-self: flex-start;
@@ -420,7 +417,7 @@ p.orange {
 #name,
 #age,
 #gender {
-  width: 100%; /* Gör att de fyller sin container */
+  width: 100%;
 }
 .gender-container {
   display: flex;
@@ -486,8 +483,8 @@ p.orange {
 
 .entry-content {
   flex: 1;
-  width: auto; /* Tar upp så mycket plats som behövs */
-  max-width: 293px; /* Sätter en maxbredd */
+  width: auto;
+  max-width: 293px;
   word-wrap: break-word; /* Ser till att text bryts om den blir för bred */
 }
 .alias {
@@ -496,6 +493,7 @@ p.orange {
   color: #2f6f8a;
 }
 /*-------------PORTFOLIO-----------------------------*/
+
 #portfolio-container {
   display: flex;
   flex-direction: column;
@@ -561,13 +559,10 @@ p.orange {
 #knowledge-text p {
   margin-bottom: 20px;
 }
-/* #knowledge-text ul li::marker {
-  color: #2f6f8a; 
-  font-size: 25px; 
-} */
+
 #knowledge-text ul {
-  list-style: none; /* Tar bort standardprickarna */
-  padding-left: 0; /* Tar bort extra indrag */
+  list-style: none;
+  padding-left: 0;
 }
 #knowledge-text ul li {
   position: relative;
@@ -575,11 +570,11 @@ p.orange {
   padding-left: 55px; /* Skapar utrymme för symbolen */
 }
 #knowledge-text ul li::before {
-  content: "</>"; /* Lägg till den anpassade symbolen */
+  content: "</>";
   position: absolute;
   left: 0;
   font-size: 2rem;
-  color: #2f6f8a; /* Ändra färg vid behov */
+  color: #2f6f8a;
   font-weight: bold;
 }
 
