@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Helvetica", sans-serif;
   background-color: #d76447;
   margin: 0;
   padding: 0;
@@ -500,33 +500,51 @@ p.orange {
   border: 1px solid black;
   padding: 2%;
 }
+#portfolio-container .alias {
+  padding-left: 10px;
+}
 #portfolio-header {
   align-self: center;
   margin-bottom: 20px;
 }
-.portfolio-box {
+.portfolio-ul {
+  list-style: none;
+  padding-left: 10px;
+}
+.portfolio-li {
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
-  justify-content: center;
+  padding: 5px;
 }
+
 .portfolio-button {
-  background: #d76447;
-  color: #fff;
+  display: flex;
+  color: #f8f8f8;
   border: none;
-  border-radius: 10px 10px 10px 10px;
-  width: 140px;
+  border-radius: 25px 25px 25px 25px;
   cursor: pointer;
-  background: linear-gradient(to bottom, #2f6f8a, #648391);
-  padding: 0 5px;
-  border-top: 1px solid #4f88a1;
-  font-size: 1.8rem;
-  font-family: "Mordak", sans-serif;
-  font-weight: normal;
-  color: rgb(255, 249, 240);
+  background-color: #2f6f8a;
+  padding: 4px 4px 4px 4px;
 }
+.portfolio-button:hover {
+  background-color: #648391; /* Ny färg vid hover */
+}
+
+.github-button-img {
+  width: 40px;
+  height: 40px;
+}
+
+#doc-button-img {
+  width: 45px;
+  height: 45px;
+  margin: -4px -6px -4px 0px;
+}
+
 .portfolio-text {
-  margin-left: 30px;
+  display: inline;
+  align-self: center;
+  margin-left: 5%;
 }
 
 /*-------------Kunskap-----------------------------*/
