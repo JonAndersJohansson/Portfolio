@@ -611,13 +611,26 @@ p.orange {
 #contact-info {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
-.contact-row {
+.contact-details {
   display: flex;
   flex-direction: row;
 }
+#contact-ul {
+  list-style: none;
+  padding: 0%;
+}
+#contact-ul li {
+  display: flex;
+  flex-direction: row;
+}
+#mail-button {
+  display: inline;
+}
 .margin-p {
   margin-left: 3%;
+  display: inline;
 }
 #linkedin-weather-container {
   display: flex;
