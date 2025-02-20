@@ -4,10 +4,37 @@
     <div class="contact-details">
       <ul id="contact-ul">
         <li>
-          <button id="mail-button">
-            <img src="/pics/mail.svg" alt="Mail" />
+          <button class="contact-button">
+            <img src="/pics/mail.svg" alt="Mail-icon" id="mail-icon" />
           </button>
           <p class="margin-p">jonjohansson88@gmail.com</p>
+        </li>
+        <li>
+          <button class="contact-button">
+            <img src="/pics/phone.svg" alt="Phone-icon" id="phone-icon" />
+          </button>
+          <p class="margin-p">070 3792074</p>
+        </li>
+        <li>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button class="contact-button" id="linkedin-button">
+              <svg
+                id="linkedin-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M17 2a5 5 0 0 1 5 5v10a5 5 0 0 1 -5 5h-10a5 5 0 0 1 -5 -5v-10a5 5 0 0 1 5 -5zm-9 8a1 1 0 0 0 -1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0 -1 -1m6 0a3 3 0 0 0 -1.168 .236l-.125 .057a1 1 0 0 0 -1.707 .707v5a1 1 0 0 0 2 0v-3a1 1 0 0 1 2 0v3a1 1 0 0 0 2 0v-3a3 3 0 0 0 -3 -3m-6 -3a1 1 0 0 0 -.993 .883l-.007 .127a1 1 0 0 0 1.993 .117l.007 -.127a1 1 0 0 0 -1 -1"
+                />
+              </svg>
+            </button>
+          </a>
         </li>
       </ul>
     </div>
@@ -32,7 +59,7 @@
         <label class="form-label" for="email">E-post:</label>
         <input type="email" id="email" name="email" required />
       </div>
-      <img id="mail-icon" src="pics/mail.png" />
+      <img id="mail-pic" src="pics/mail.png" />
     </div>
     <div id="contact-message">
       <label class="form-label" for="meddelande">Meddelande:</label>

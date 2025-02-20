@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }" class="profile-pic">
             <div class="entry-content">
                 <p class="timestamp">${formatDate(entry.timestamp)}</p>
-                <span class="alias">${entry.name}</span><p class="inline-p"> ${
+                <span class="p-blue">${entry.name}</span><p class="inline-p"> ${
         entry.gender
       }${entry.age}</p>
                 <p class="message">${entry.message}</p>

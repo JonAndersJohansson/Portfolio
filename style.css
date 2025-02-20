@@ -276,6 +276,7 @@ p {
 .form-header h2 {
   margin: 0;
   padding-left: 10px;
+  padding-right: 10px;
   color: rgb(255, 249, 240);
 }
 
@@ -436,7 +437,7 @@ p.orange {
   border-radius: 10px 0 0 0;
   cursor: pointer;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
-  padding: 0 5px;
+  padding: 1px 6px;
   border-top: 1px solid #4f88a1;
   font-size: 1rem;
   font-family: "Mordak", sans-serif;
@@ -623,30 +624,51 @@ p.orange {
 }
 #contact-ul li {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
-#mail-button {
-  display: inline;
+.contact-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 4px solid #2f6f8a;
+  margin: -2.7px;
+}
+
+#phone-icon {
+  transform: scale(1.8);
+}
+#mail-icon {
+  transform: scale(1.8);
+}
+#linkedin-button {
+  cursor: pointer;
+}
+#linkedin-button:hover {
+  border: 4px solid #648391;
+}
+#linkedin-icon {
+  transform: scale(1.8);
+  color: #2f6f8a;
+}
+#linkedin-icon:hover {
+  color: #648391;
 }
 .margin-p {
   margin-left: 3%;
   display: inline;
 }
-#linkedin-weather-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-right: 3%;
-  height: 100%;
-  margin-top: 3%;
-}
 #weather-container {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
-  /* border: 1px solid black; */
+  align-self: center;
   padding: 10px;
   width: 200px;
+  margin-bottom: 20px;
 }
 #weather-container p {
   align-self: center;
@@ -657,19 +679,16 @@ p.orange {
   align-self: center;
 }
 
-#linkedin-logo {
-  width: 100px;
-}
 #contact-form {
   display: flex;
   align-self: flex-start;
   margin-left: auto;
   flex-direction: column;
-  width: 250px;
   gap: 10px;
   border: 1px solid #000000;
   margin-bottom: 20px;
 }
+
 #form-column {
   display: flex;
   flex-direction: column;
@@ -678,7 +697,6 @@ p.orange {
 #contact-input {
   display: flex;
   flex-direction: row;
-  /* width: auto; */
   margin: 0 3%;
 }
 #contact-message {
@@ -687,16 +705,13 @@ p.orange {
 #message {
   width: 100%;
 }
-/* #mail-icon-container {
-  display: flex;
-  align-items: end;
-} */
-#mail-icon {
+
+#mail-pic {
   display: flex;
   align-self: center;
   justify-self: center;
-  padding-left: 3%;
-  width: 60px;
+  padding-left: 1%;
+  width: 40px;
   height: auto;
 }
 
