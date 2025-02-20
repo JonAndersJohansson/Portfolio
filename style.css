@@ -505,51 +505,43 @@ p.orange {
   border: 1px solid black;
   padding: 20px;
 }
-#portfolio-container .p-blue {
-  padding-left: 10px;
-}
+
 #portfolio-header {
   align-self: center;
   margin-bottom: 20px;
 }
 .portfolio-ul {
   list-style: none;
-  padding-left: 10px;
+  padding: 0%;
 }
-.portfolio-li {
+.portfolio-ul li {
   display: flex;
-  flex-direction: row;
-  padding: 5px;
+  align-items: center;
+  gap: 10px;
 }
 
 .portfolio-button {
   display: flex;
-  color: #f8f8f8;
-  border: none;
-  border-radius: 25px 25px 25px 25px;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 4px solid #2f6f8a;
+  margin: -2.7px;
   cursor: pointer;
-  background-color: #2f6f8a;
-  padding: 4px 4px 4px 4px;
 }
 .portfolio-button:hover {
-  background-color: #648391; /* Ny färg vid hover */
+  border: 3px solid #2f6f8a;
 }
 
-.github-button-img {
-  width: 40px;
-  height: 40px;
+.github-icon {
+  transform: scale(1.8);
+  margin-bottom: -3px;
 }
-
-#doc-button-img {
-  width: 45px;
-  height: 45px;
-  margin: -4px -6px -4px 0px;
-}
-
-.portfolio-text {
-  display: inline;
-  align-self: center;
-  margin-left: 5%;
+#cv-icon {
+  transform: scale(1.8);
 }
 
 /*-------------Kunskap-----------------------------*/
