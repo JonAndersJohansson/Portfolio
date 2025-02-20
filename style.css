@@ -641,14 +641,11 @@ p.orange {
   cursor: pointer;
 }
 #linkedin-button:hover {
-  border: 4px solid #648391;
+  border: 3px solid #2f6f8a;
 }
 #linkedin-icon {
   transform: scale(1.8);
   color: #2f6f8a;
-}
-#linkedin-icon:hover {
-  color: #648391;
 }
 .margin-p {
   margin-left: 3%;
