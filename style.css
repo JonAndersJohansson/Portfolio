@@ -56,7 +56,9 @@ h1 {
 p,
 label,
 select,
-button {
+button,
+input,
+textarea {
   font-size: 1.6rem;
 }
 .p-blue {
@@ -148,11 +150,11 @@ button {
 }
 
 #headerbox4 img {
-  width: 30px;
+  width: 2.6vw;
 }
 .seperator {
   font-family: "Arial", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
-  font-size: 40px;
+  font-size: 2.3vh;
   color: #2e5f7e;
   opacity: 0.25; /* Gör texten lite genomskinlig */
   display: inline-block;
@@ -252,7 +254,7 @@ button {
   font-weight: normal;
   text-decoration: none;
   color: rgb(255, 249, 240);
-  padding: 0.1vh 2vw; /* padding: 1% 8px; */
+  padding: 0.1vh 1.25vw;
 }
 
 .section-header {
@@ -335,7 +337,7 @@ main {
 .facts {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tre jämnt fördelade kolumner */
-  gap: 20px;
+  gap: 1vw;
   border: 1px solid black;
   border-top: none;
   background-color: #f8f8f8;
@@ -371,23 +373,23 @@ p.orange {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-height: 65vh;
+  max-height: 75vh;
   background: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
+  align-items: flex-start;
 }
 
 #guestbook-form {
   display: flex;
-  min-width: 50%;
-  flex-grow: 1;
-  max-height: 30vh;
+  max-height: 100%;
   flex-direction: column;
   margin-left: auto;
   gap: 10px;
   border: 1px solid #000000;
   margin-bottom: 20px;
 }
+
 .form-header {
   display: flex;
   justify-content: space-between;
@@ -406,15 +408,16 @@ p.orange {
   flex-direction: row;
   margin: 0 3%;
 }
-.message-container {
+.referece-message-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
   margin: 0 3%;
+  max-height: 40%;
 }
-#message {
-  height: 80%;
+#reference-message-input {
+  width: 100%;
 }
+
 .gender-age-container {
   display: flex;
   gap: 10px;
@@ -444,7 +447,7 @@ p.orange {
   border-radius: 10px 0 0 0;
   cursor: pointer;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
-  padding: 1px 6px;
+  padding: 0.1vh 1vw;
   border-top: 1px solid #4f88a1;
   font-family: "Mordak", sans-serif;
   font-weight: normal;
@@ -458,7 +461,7 @@ p.orange {
 /*--------------------Referens entries----------------------*/
 
 #guestbook-entries {
-  max-height: 50vh;
+  max-height: 65vh;
   min-width: 50%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -483,8 +486,8 @@ p.orange {
 .profile-pic {
   height: auto; /* Behåller proportionerna */
   width: auto; /* Gör den responsiv */
-  max-width: 10vw; /* Begränsar maxbredden */
-  max-height: 10vh; /* Begränsar maxhöjden */
+  max-width: 8vw; /* Begränsar maxbredden */
+  min-height: 100%;
   aspect-ratio: 150 / 190; /* Originalförhållande */
   object-fit: cover; /* Behövs inte här men kan vara bra om du klipper bilden */
   border: solid 1px #000000;
@@ -501,7 +504,7 @@ p.orange {
 }
 .entry-content p {
   margin: 0;
-  line-height: 1.2; /* Justerar avståndet mellan rader */
+  line-height: 1.2;
 }
 
 /*-------------PORTFOLIO-----------------------------*/
@@ -514,6 +517,7 @@ p.orange {
   background-color: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
+  align-items: center;
 }
 
 #portfolio-header {
@@ -564,10 +568,16 @@ p.orange {
 /*-------------Kunskap-----------------------------*/
 #knowledge {
   width: 100%;
-  max-height: 58vh;
+  max-height: 70vh;
   background-color: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
+}
+#knowledge .p-blue {
+  text-align: center; /* Centrerar texten inuti */
+  display: block; /* Gör att margin fungerar */
+  width: fit-content; /* Anpassar bredden efter innehållet */
+  margin: 0 auto; /* Centrerar horisontellt */
 }
 #text-and-img {
   display: flex;
@@ -608,23 +618,26 @@ p.orange {
 }
 
 /*-------------Kontakt-----------------------------*/
+
 #contact {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
-  background-color: #f8f8f8;
-  padding: 20px;
   width: 100%;
-  height: 100%;
+  max-height: 95vh;
+  background-color: #f8f8f8;
+  border: 1px solid black;
+  padding: 20px;
 }
+
 #contact-info {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  width: 50%;
 }
 .contact-details {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 #contact-ul {
   list-style: none;
@@ -635,32 +648,41 @@ p.orange {
   align-items: center;
   gap: 10px;
 }
+
 .contact-button {
+  position: relative; /* Gör att barn kan positioneras fritt */
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 35px;
-  height: 35px;
+  width: 5vw;
+  height: auto;
+  aspect-ratio: 1/1; /* Fyrkantig */
+  border: 0.45vw solid #2f6f8a;
   border-radius: 50%;
-  border: 4px solid #2f6f8a;
-  margin: -2.7px;
 }
 
 #phone-icon {
-  transform: scale(1.8);
+  position: absolute;
+  width: 5vw;
+  aspect-ratio: 1 / 1;
 }
 #mail-icon {
-  transform: scale(1.8);
+  position: absolute;
+  width: 5vw;
+  aspect-ratio: 1 / 1;
 }
 #linkedin-button {
   cursor: pointer;
 }
 #linkedin-button:hover {
-  border: 3px solid #2f6f8a;
+  border: 0.25vw solid #2f6f8a;
 }
 #linkedin-icon {
-  transform: scale(1.8);
+  position: absolute;
+  width: 5vw;
+  aspect-ratio: 1 / 1;
   color: #2f6f8a;
 }
 .margin-p {
@@ -680,15 +702,18 @@ p.orange {
 }
 
 #weatherImage {
-  width: 50px;
+  width: 4vw;
   align-self: center;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2)); /* Svag skugga */
 }
 
 #contact-form {
   display: flex;
-  align-self: flex-start;
-  margin-left: auto;
+  min-width: 50%;
+  flex-grow: 1;
+  max-height: 100%;
   flex-direction: column;
+  margin-left: auto;
   gap: 10px;
   border: 1px solid #000000;
   margin-bottom: 20px;
@@ -702,12 +727,13 @@ p.orange {
 #contact-input {
   display: flex;
   flex-direction: row;
-  margin: 0 3%;
+  margin: 0 2%;
 }
 #contact-message {
   margin: 0 3%;
 }
-#message {
+
+#contact-message-input {
   width: 100%;
 }
 
@@ -716,20 +742,14 @@ p.orange {
   align-self: center;
   justify-self: center;
   padding-left: 1%;
-  width: 40px;
+  width: 8vw;
   height: auto;
 }
 
 /*<---------------- Media queries ---------------------->*/
 @media (min-width: 850px) and (max-width: 1280px) {
-  body {
-    height: 90vh;
-  }
   h1 {
     font-size: 3.2rem;
-  }
-  .container {
-    margin-top: 10vh;
   }
 
   .fname,
@@ -757,7 +777,9 @@ p.orange {
   p,
   label,
   button,
-  select {
+  select,
+  input,
+  textarea {
     font-size: 1.2rem;
   }
   #headerbox4 img {
@@ -775,16 +797,8 @@ p.orange {
   }
 }
 @media (min-width: 575px) and (max-width: 849px) {
-  body {
-    height: 90vh;
-  }
   h1 {
     font-size: 2.6rem;
-  }
-  .container {
-    margin-top: 10vh;
-    width: 80vw;
-    margin-left: 8vw;
   }
   .fname,
   .lname {
@@ -812,7 +826,9 @@ p.orange {
   p,
   label,
   button,
-  select {
+  select,
+  input,
+  textarea {
     font-size: 0.9rem;
   }
   .main-info {
@@ -828,16 +844,8 @@ p.orange {
 }
 
 @media (min-width: 401px) and (max-width: 575px) {
-  body {
-    height: 90vh;
-  }
   h1 {
     font-size: 2rem;
-  }
-  .container {
-    margin-top: 10vh;
-    width: 90vw;
-    margin-left: 3vw;
   }
 
   p {
@@ -870,7 +878,9 @@ p.orange {
   p,
   label,
   button,
-  select {
+  select,
+  input,
+  textarea {
     font-size: 0.7rem;
   }
 
@@ -884,22 +894,10 @@ p.orange {
 }
 
 @media (max-width: 400px) {
-  body {
-    height: 90vh;
-  }
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
-  .container {
-    margin-top: 10vh;
-    width: 90vw;
-    margin-left: 3vw;
-  }
-
-  p {
-    font-size: 0.6rem;
-  }
   #fname,
   #lname {
     margin-top: -5px;
@@ -933,7 +931,9 @@ p.orange {
   p,
   label,
   button,
-  select {
+  select,
+  input,
+  textarea {
     font-size: 0.6rem;
   }
 
@@ -951,12 +951,9 @@ p.orange {
 }
 
 @media (min-width: 666px) and (max-width: 1024px) {
-  body {
-    height: 97vh;
-  }
   .container {
     margin-top: 3vh;
-    width: 90vw;
+    width: 91vw;
     margin-left: 3vw;
   }
 }
@@ -969,6 +966,13 @@ p.orange {
   #guestbook-form,
   #contact {
     align-self: flex-end;
+    width: 100%;
+  }
+  #contact-form {
+    justify-self: flex-end;
+    width: 100%;
+  }
+  #contact-info {
     width: 100%;
   }
 }
