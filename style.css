@@ -53,10 +53,14 @@ h1 {
   font-size: 5rem;
 }
 
-p {
-  font-size: 2rem;
+p,
+label,
+select,
+button {
+  font-size: 1.6rem;
 }
 .p-blue {
+  display: inline;
   font-weight: bold;
   color: #2f6f8a;
 }
@@ -144,7 +148,7 @@ p {
 }
 
 #headerbox4 img {
-  width: 40px;
+  width: 30px;
 }
 .seperator {
   font-family: "Arial", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
@@ -248,7 +252,7 @@ p {
   font-weight: normal;
   text-decoration: none;
   color: rgb(255, 249, 240);
-  padding: 0px 8px;
+  padding: 0.1vh 2vw; /* padding: 1% 8px; */
 }
 
 .section-header {
@@ -367,7 +371,7 @@ p.orange {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  max-height: 65vh;
   background: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
@@ -375,9 +379,10 @@ p.orange {
 
 #guestbook-form {
   display: flex;
-  width: 250px;
+  min-width: 50%;
+  flex-grow: 1;
+  max-height: 30vh;
   flex-direction: column;
-  align-self: flex-start;
   margin-left: auto;
   gap: 10px;
   border: 1px solid #000000;
@@ -404,7 +409,11 @@ p.orange {
 .message-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
   margin: 0 3%;
+}
+#message {
+  height: 80%;
 }
 .gender-age-container {
   display: flex;
@@ -425,6 +434,7 @@ p.orange {
 }
 .button-container {
   display: flex;
+  margin-top: auto;
   justify-content: right;
 }
 .submit-button {
@@ -436,24 +446,23 @@ p.orange {
   background: linear-gradient(to bottom, #2f6f8a, #648391);
   padding: 1px 6px;
   border-top: 1px solid #4f88a1;
-  font-size: 1rem;
   font-family: "Mordak", sans-serif;
   font-weight: normal;
   margin: 0;
   color: rgb(255, 249, 240);
 }
 .form-label {
-  font-size: 0.8rem;
   font-weight: bold;
   color: #d76447;
 }
 /*--------------------Referens entries----------------------*/
 
 #guestbook-entries {
-  height: 310px;
-  min-width: 275px;
+  max-height: 50vh;
+  min-width: 50%;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-right: 20px;
 }
 .inline-p {
   display: inline;
@@ -472,26 +481,29 @@ p.orange {
 }
 
 .profile-pic {
-  max-width: 70px;
-
-  max-height: 87px;
-  object-fit: cover; /* Behåller proportioner */
-  flex-shrink: 0; /* Hindrar att flexbox skalar upp bilden */
-  margin-right: 10px;
+  height: auto; /* Behåller proportionerna */
+  width: auto; /* Gör den responsiv */
+  max-width: 10vw; /* Begränsar maxbredden */
+  max-height: 10vh; /* Begränsar maxhöjden */
+  aspect-ratio: 150 / 190; /* Originalförhållande */
+  object-fit: cover; /* Behövs inte här men kan vara bra om du klipper bilden */
   border: solid 1px #000000;
+  margin-right: 10px;
 }
 
 .entry-content {
   flex: 1;
   width: auto;
-  max-width: 293px;
+  max-width: 100%;
   word-wrap: break-word; /* Ser till att text bryts om den blir för bred */
+  align-self: flex-start;
+  gap: -10px;
 }
-.alias {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #2f6f8a;
+.entry-content p {
+  margin: 0;
+  line-height: 1.2; /* Justerar avståndet mellan rader */
 }
+
 /*-------------PORTFOLIO-----------------------------*/
 
 #portfolio-container {
@@ -710,9 +722,7 @@ p.orange {
   .container {
     margin-top: 10vh;
   }
-  p {
-    font-size: 1.2rem;
-  }
+
   .fname,
   .lname {
     margin-top: -5px;
@@ -734,8 +744,12 @@ p.orange {
   .section-header h2,
   .facts-border h2,
   .form-header h2,
-  .portfolio-button {
-    font-size: 1.3rem;
+  .portfolio-button,
+  p,
+  label,
+  button,
+  select {
+    font-size: 1.2rem;
   }
   #headerbox4 img {
     width: 30px;
@@ -768,9 +782,7 @@ p.orange {
     margin-top: -5px;
     margin-bottom: -15px;
   }
-  p {
-    font-size: 0.9rem;
-  }
+
   .seperator {
     font-size: 20px;
   }
@@ -787,14 +799,12 @@ p.orange {
   .section-header h2,
   .facts-border h2,
   .form-header h2,
-  .portfolio-button {
+  .portfolio-button,
+  p,
+  label,
+  button,
+  select {
     font-size: 0.9rem;
-  }
-  .submit-button {
-    font-size: 0.8rem;
-  }
-  .alias {
-    font-size: 1rem;
   }
   .main-info {
     padding-left: 3%;
@@ -847,18 +857,14 @@ p.orange {
   .section-header h2,
   .facts-border h2,
   .form-header h2,
-  .portfolio-button {
+  .portfolio-button,
+  p,
+  label,
+  button,
+  select {
     font-size: 0.7rem;
   }
-  .submit-button {
-    font-size: 0.8rem;
-  }
-  .alias {
-    font-size: 0.8rem;
-  }
-  .form-label {
-    font-size: 0.7rem;
-  }
+
   #knowledge-text ul li {
     font-size: 0.9rem;
     padding-left: 25px;
@@ -914,22 +920,24 @@ p.orange {
   .section-header h2,
   .facts-border h2,
   .form-header h2,
-  .submit-button,
-  .portfolio-button {
+  .portfolio-button,
+  p,
+  label,
+  button,
+  select {
     font-size: 0.6rem;
   }
-  .alias {
-    font-size: 0.7rem;
-  }
-  .form-label {
-    font-size: 0.6rem;
-  }
+
   #knowledge-text ul li {
     font-size: 0.8rem;
     padding-left: 25px;
   }
   #knowledge-text ul li::before {
     font-size: 0.8rem;
+  }
+  /*----------Guestbook----------------*/
+  #guestbook-entries {
+    min-width: 250px;
   }
 }
 
@@ -952,5 +960,6 @@ p.orange {
   #guestbook-form,
   #contact {
     align-self: flex-end;
+    width: 100%;
   }
 }
