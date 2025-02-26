@@ -373,7 +373,7 @@ p.orange {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-height: 75vh;
+  max-height: 100vh;
   background: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
@@ -461,7 +461,7 @@ p.orange {
 /*--------------------Referens entries----------------------*/
 
 #guestbook-entries {
-  max-height: 65vh;
+  max-height: 88vh;
   min-width: 50%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -568,7 +568,7 @@ p.orange {
 /*-------------Kunskap-----------------------------*/
 #knowledge {
   width: 100%;
-  max-height: 70vh;
+  max-height: 100vh;
   background-color: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
@@ -623,7 +623,7 @@ p.orange {
   display: flex;
   flex-direction: row;
   width: 100%;
-  max-height: 95vh;
+  max-height: 125vh;
   background-color: #f8f8f8;
   border: 1px solid black;
   padding: 20px;
@@ -845,7 +845,7 @@ p.orange {
 
 @media (min-width: 401px) and (max-width: 575px) {
   h1 {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   p {
