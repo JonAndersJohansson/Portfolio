@@ -1,4 +1,4 @@
-<header class="section-header"><h2>Referens</h2></header>
+<header class="section-header"><h2>REFERENS</h2></header>
 <section id="guestbook">
   <div id="guestbook-entries">
     <ul id="entries-list">
@@ -8,7 +8,7 @@
           <p class="timestamp">12-09-08, kl 14:43</p>
           <p class="p-blue">TidigareGruppChef</p>
           <p class="inline-p">F36</p>
-          <p class="message">Jon är en lagspelare!</p>
+          <p class="entry-message">Jon är en lagspelare!</p>
         </div>
       </li>
       <li class="guestbook-entry">
@@ -17,7 +17,7 @@
           <p class="timestamp">24-01-15, kl 16:12</p>
           <p class="p-blue">GammalKollega</p>
           <p class="inline-p">P39</p>
-          <p class="message">Flitigare kille får du leta efter...</p>
+          <p class="entry-message">Flitigare kille får du leta efter...</p>
         </div>
       </li>
       <li class="guestbook-entry">
@@ -39,7 +39,9 @@
     </div>
     <div class="gender-age-container">
       <div class="gender-container">
-        <label class="form-label" for="gender">Kön:</label>
+        <label class="form-label" id="form-label-gender" for="gender"
+          >Kön:</label
+        >
         <select id="gender" required>
           <option value="Man">Man</option>
           <option value="Kvinna">Kvinna</option>
@@ -54,8 +56,11 @@
       <label class="form-label" for="message">Inlägg:</label>
       <textarea id="reference-message-input" rows="3" required></textarea>
     </div>
+    <p id="no-contact-text">OBS! Detta är inget kontaktformulär.</p>
     <div class="button-container">
-      <button class="submit-button" type="submit">SKICKA INLÄGGET ▶▶▶</button>
+      <button class="submit-button" type="submit">
+        SKICKA INLÄGGET <span class="small-arrows">▶▶▶</span>
+      </button>
     </div>
   </form>
 </section>

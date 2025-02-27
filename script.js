@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nameInput = document.getElementById("name");
     const genderInput = document.getElementById("gender");
     const ageInput = document.getElementById("age");
-    const messageInput = document.getElementById("message");
+    const messageInput = document.getElementById("reference-message-input");
     const entriesList = document.getElementById("entries-list");
 
     loadEntries(); // Ladda inlägg direkt vid sidladdning
@@ -121,8 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
                   <img src="${profilePic}" alt="${genderSymbol}" class="profile-pic">
                   <div class="entry-content">
                       <p class="timestamp">${formatDate(timestamp)}</p>
-                      <span class="alias">${name}</span><p class="inline-p"> ${genderSymbol}${age}</p>
-                      <p class="message">${message}</p>
+                      <p class="p-blue">${name}</p><p class="inline-p"> ${genderSymbol}${age}</p>
+                      <p class="entry-message">${message}</p>
                   </div>
               `;
 

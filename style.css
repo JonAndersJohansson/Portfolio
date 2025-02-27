@@ -42,15 +42,22 @@ p {
   font-weight: bolder;
   unicode-range: U+00C5, U+00C4, U+00D6, U+00E5, U+00E4, U+00F6; /* ÅÄÖ i både versaler & gemener */
 }
-
-h1,
-h2 {
-  font-family: "Mordak", "FallbackBold", sans-serif;
+@font-face {
+  font-family: "Jersey15";
+  src: url("font/Jersey15-Regular.ttf") format("truetype");
   font-weight: normal;
 }
 
 h1 {
   font-size: 5rem;
+  font-family: "Mordak", "FallbackBold", sans-serif;
+  font-weight: normal;
+}
+
+h2 {
+  font-family: "Jersey15", "Helvetica", sans-serif;
+  font-weight: normal;
+  /* font-size: 5rem; */
 }
 
 p,
@@ -74,13 +81,22 @@ textarea {
 
 .header {
   display: grid;
-  grid-template-columns: auto minmax(10px, 1.5fr) 1fr;
+  grid-template-columns: auto auto 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-    "headerbox1 headerbox1 headerbox2"
+    "headerbox0 headerbox1 headerbox2"
     "headerbox3 headerbox4 headerbox5"
     "headerbox6 headerbox7 headerbox7";
   background-color: #d76447;
+}
+#headerbox0 {
+  position: relative;
+  grid-area: headerbox0;
+  background: linear-gradient(to bottom, #306181, #416e8a);
+  border-top: clamp(2px, 0.2vw, 5px) solid #5e90a5;
+  border-left: clamp(2px, 0.2vw, 5px) solid #45839e;
+
+  /* box-shadow: -1px -1px 0 0 black; */
 }
 
 #headerbox1 {
@@ -91,23 +107,30 @@ textarea {
   align-items: center;
   background: linear-gradient(to bottom, #306181, #416e8a);
   border-top-right-radius: 100px;
-  border-top: 1px solid #45839e;
+  border-top: clamp(2px, 0.2vw, 5px) solid #5e90a5;
   gap: 1px;
-  outline: 1px solid rgb(0, 0, 0);
   margin-bottom: -1px;
+}
+#start-page {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
 }
 
 #headerbox2 {
   grid-area: headerbox2;
-  border-bottom: 1px solid #000000;
+  position: relative;
+  border-bottom: 1.3px solid #255870;
+  /* box-shadow: 0 1px 0 0 #255870; */
+
   margin-bottom: 0px;
   position: relative;
 }
 #headerbox3 {
   grid-area: headerbox3;
-  border-top: 1px solid #45839e;
+  border-top: clamp(1px, 0.2vw, 2.5px) solid #45839e;
   box-shadow: 0 -1px 0 0 #255870;
-  background: linear-gradient(to bottom, #1d5672, #33607f);
+  background: linear-gradient(to bottom, #265870, #33607f);
   width: 3vw;
   position: relative;
 }
@@ -117,7 +140,9 @@ textarea {
   width: 200%;
   height: 200%;
   background: #d76447;
-  border: 1px solid black;
+  border: 0.1px solid black;
+  /* outline: 1px solid red; */
+  /* box-shadow: 5px solid red; */
   overflow: hidden;
   border-radius: 50%;
   bottom: -100%; /* Flyttar cirkeln ner så att dess centrum är i boxens hörn */
@@ -131,9 +156,9 @@ textarea {
   display: flex;
   flex-direction: row;
   background: linear-gradient(to bottom, #265870, #33607f);
-  border-bottom: 1px solid #000000;
-  border-top: 1px solid #4b7993;
-  outline: 1px solid #255870;
+  border-bottom: clamp(1px, 0.2vw, 2.5px) solid #000000;
+  border-top: clamp(1px, 0.2vw, 2.5px) solid #4b7993;
+  box-shadow: 0 -1px 0 0 #255870;
   justify-content: center;
   align-items: center;
 }
@@ -144,24 +169,28 @@ textarea {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 50px;
+  gap: 15%;
   justify-content: center;
   align-items: center;
 }
 
 #headerbox4 img {
-  width: 2.6vw;
+  max-width: 60px;
+  min-width: 3vw;
+  max-height: 53.3px;
+  object-fit: contain;
 }
 .seperator {
   font-family: "Arial", "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
-  font-size: 2.3vh;
+  font-size: clamp(1rem, 2.4vw, 3rem); /* font-size: 2.4vw; */
   color: #2e5f7e;
   opacity: 0.25; /* Gör texten lite genomskinlig */
   display: inline-block;
   transform: scaleX(3);
-  text-shadow: 0.1px 0.4px 0.2px rgba(255, 255, 255, 1),
-    /* Skugga nedåt */ -0.1px -0.8px 0.2px rgba(0, 0, 0, 1); /* Ljusare skugga upptill */
+  text-shadow: 0.2px 0.6px 0.4px rgba(255, 255, 255, 1),
+    /* Skugga nedåt */ -0.2px -0.8px 0.4px rgba(0, 0, 0, 1); /* Ljusare skugga upptill */
   text-align: center;
+  margin: -3px 0;
 }
 
 #headerbox5 {
@@ -170,17 +199,20 @@ textarea {
   text-align: right;
   align-self: flex-end;
   padding: 0 0.5%;
-  background: linear-gradient(to bottom, #1d5672, #33607f);
-  border-right: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  border-top: 1px solid #45839e;
+  background: linear-gradient(to bottom, #265870, #33607f);
+  border-right: clamp(1px, 0.2vw, 1.5px) solid #000000;
+  border-bottom: clamp(1px, 0.2vw, 2.5px) solid #000000;
+  border-top: clamp(1px, 0.2vw, 2.5px) solid #4b7993;
+
+  /* border-bottom: clamp(1px, 0.2vw, 2.5px) solid #45839e; */
+  /* outline: 1.3px solid #255870; */
 }
 
 #headerbox5 h1 {
   font-size: 3rem;
   color: #33607f;
-  padding-right: 10px;
-  -webkit-text-stroke: 0.5px black;
+  padding-right: 1vw;
+  -webkit-text-stroke: clamp(0.5px, 0.1vw, 1.5px) black; /* -webkit-text-stroke: 0.5px black; */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   letter-spacing: -2px;
 }
@@ -189,28 +221,28 @@ textarea {
 }
 #headerbox7 {
   grid-area: headerbox7;
-  margin-left: 0px;
+  margin-left: -0.5px;
+  border-bottom: clamp(1px, 0.2vw, 1.5px) solid black;
 }
 
 #fname {
   color: #d76447;
-  padding-left: 15px;
   margin-top: -5px;
   margin-bottom: -15px;
   text-shadow: -1px -1px 0px #d76447d3;
   letter-spacing: -5px;
-  -webkit-text-stroke: 0.9px black;
+  -webkit-text-stroke: clamp(0.5px, 0.1vw, 2px) black;
   position: relative;
 }
 
 #lname {
   color: #5a88a3;
-  padding-right: 40px;
+  padding-right: 6vw;
   margin-top: -5px;
   margin-bottom: -15px;
   text-shadow: -1px -1px 0px #5a88a3;
   letter-spacing: -5px;
-  -webkit-text-stroke: 0.9px black;
+  -webkit-text-stroke: clamp(0.5px, 0.1vw, 2px) black;
 }
 
 .nav {
@@ -230,16 +262,15 @@ textarea {
 }
 
 .nav li {
-  background-color: #33607f;
-  border-width: 1px 1px 1px 1px;
-  border-style: solid;
-  border-color: black;
+  background: linear-gradient(to bottom, #33607f, #265870);
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   border-top-color: #4f88a1;
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 20px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: auto;
+  width: 19.5%;
   min-width: auto;
 }
 
@@ -250,38 +281,45 @@ textarea {
   text-align: center;
   height: 100%;
   width: 100%;
-  font-family: "Mordak", "FallbackBold", sans-serif;
+  font-family: "Jersey15", "Helvetica", sans-serif;
   font-weight: normal;
   text-decoration: none;
   color: rgb(255, 249, 240);
-  padding: 0.1vh 1.25vw;
+  margin-top: -3%;
+  margin-bottom: -3%;
 }
 
 .section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: clamp(1px, 0.2vw, 2.5px) solid black;
+  border-right: clamp(1px, 0.2vw, 2.5px) solid black;
   width: 100%;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
   padding: 0px;
-  border-top: 1px solid #4f88a1;
+  border-top: clamp(2px, 0.2vw, 5px) solid #4f88a1;
 }
 
 .nav li a,
 .section-header h2,
 .facts-border h2,
 .form-header h2 {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
 }
 .section-header h2,
 .facts-border h2,
 .form-header h2 {
   margin: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 1%;
+  padding-right: 1%;
   color: rgb(255, 249, 240);
+  margin-top: -0.5%;
+  margin-bottom: -0.5%;
+}
+.form-header h2 {
+  padding-left: 2%;
+  padding-right: 2%;
 }
 
 main {
@@ -295,42 +333,40 @@ main {
 .infoandpic {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  border: 1px solid black;
+  align-items: flex-start; /* Säkerställer att allt börjar högst upp */
+  /* align-items: center; */
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   background-color: #f8f8f8;
   width: 100%;
 }
-.me-pic {
-  display: flex;
-  flex: 3;
-}
 
-.me-pic img {
-  width: 80%;
+#me-img {
+  width: 20%;
+  object-fit: contain;
   height: auto;
   display: block;
-  border: 1px solid #8f8b8b;
-  box-sizing: border-box; /* Säkerställer att border räknas med i storleken */
-  margin: 10% 0 10% 10%;
-  padding: 5px;
+  border: clamp(1px, 0.2vw, 2.5px) solid #8f8b8b;
+  box-sizing: border-box;
+  margin: 3% 0 3% 3%;
+  padding: 0.5%;
 }
 
 .main-info {
   display: flex;
+  align-self: center;
   flex-direction: column;
   background-color: #f8f8f8;
-  padding: 5%;
-  flex: 7;
+  padding: 0% 3%;
+  margin: 3% 0;
+  flex: 1;
 }
-.main-info p {
-  margin-bottom: 10px;
-}
+
 .facts-border {
   width: 100%;
   flex-wrap: wrap;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
-  border: 1px solid black;
-  border-top: 2px solid #4f88a1;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
+  border-top: clamp(2px, 0.2vw, 5px) solid #4f88a1;
   color: rgb(255, 249, 240);
 }
 
@@ -338,7 +374,7 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tre jämnt fördelade kolumner */
   gap: 1vw;
-  border: 1px solid black;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   border-top: none;
   background-color: #f8f8f8;
   width: 100%;
@@ -375,7 +411,7 @@ p.orange {
   width: 100%;
   max-height: 100vh;
   background: #f8f8f8;
-  border: 1px solid black;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   padding: 20px;
   align-items: flex-start;
 }
@@ -385,8 +421,8 @@ p.orange {
   max-height: 100%;
   flex-direction: column;
   margin-left: auto;
-  gap: 10px;
-  border: 1px solid #000000;
+  gap: 3px;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   margin-bottom: 20px;
 }
 
@@ -420,7 +456,7 @@ p.orange {
 
 .gender-age-container {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 .age-container {
   display: flex;
@@ -435,6 +471,11 @@ p.orange {
   display: flex;
   flex: 1;
 }
+#gender,
+#age {
+  margin-left: 5%;
+}
+
 .button-container {
   display: flex;
   margin-top: auto;
@@ -449,15 +490,27 @@ p.orange {
   background: linear-gradient(to bottom, #2f6f8a, #648391);
   padding: 0.1vh 1vw;
   border-top: 1px solid #4f88a1;
-  font-family: "Mordak", sans-serif;
+  font-family: "Jersey15", "Helvetica", sans-serif;
   font-weight: normal;
   margin: 0;
   color: rgb(255, 249, 240);
 }
+.small-arrows {
+  font-size: 0.6em; /* Gör pilarna 80% av textstorleken */
+}
+
 .form-label {
   font-weight: bold;
   color: #d76447;
 }
+#no-contact-text {
+  width: fit-content; /* Gör att den bara tar upp plats efter innehåll */
+  margin: 0 auto; /* Centrerar horisontellt */
+}
+/* #form-label-gender {
+  margin-right: 10%;
+} */
+
 /*--------------------Referens entries----------------------*/
 
 #guestbook-entries {
@@ -515,7 +568,7 @@ p.orange {
   width: 100%;
   height: 100%;
   background-color: #f8f8f8;
-  border: 1px solid black;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   padding: 20px;
   align-items: center;
 }
@@ -570,7 +623,7 @@ p.orange {
   width: 100%;
   max-height: 100vh;
   background-color: #f8f8f8;
-  border: 1px solid black;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   padding: 20px;
 }
 #knowledge .p-blue {
@@ -587,7 +640,12 @@ p.orange {
   justify-content: space-evenly;
   align-items: center;
 }
-
+#knowledge-text {
+  border: 3px solid red;
+  box-shadow: 0 0 0 6px blue;
+  outline: 3px solid green;
+  /* filter: drop-shadow(0px 0px 1px black); */
+}
 #knowledge-text p {
   margin-bottom: 20px;
 }
@@ -625,7 +683,7 @@ p.orange {
   width: 100%;
   max-height: 125vh;
   background-color: #f8f8f8;
-  border: 1px solid black;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   padding: 20px;
 }
 
@@ -714,8 +772,8 @@ p.orange {
   max-height: 100%;
   flex-direction: column;
   margin-left: auto;
-  gap: 10px;
-  border: 1px solid #000000;
+  gap: 3px;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
   margin-bottom: 20px;
 }
 
@@ -727,7 +785,7 @@ p.orange {
 #contact-input {
   display: flex;
   flex-direction: row;
-  margin: 0 2%;
+  margin: 0 3%;
 }
 #contact-message {
   margin: 0 3%;
@@ -747,6 +805,7 @@ p.orange {
 }
 
 /*<---------------- Media queries ---------------------->*/
+
 @media (min-width: 850px) and (max-width: 1280px) {
   h1 {
     font-size: 3.2rem;
@@ -757,22 +816,19 @@ p.orange {
     margin-top: -5px;
     margin-bottom: -20px;
   }
-  .seperator {
+  /* .seperator {
     font-size: 25px;
-  }
-  #headerbox4 {
+  } */
+  /* #headerbox4 {
     padding: 0% 2% 0% 5%;
-  }
+  } */
   #headerbox5 h1 {
     font-size: 1.8rem;
   }
   #headerbox4 ul {
     gap: 20px;
   }
-  .nav li a,
-  .section-header h2,
-  .facts-border h2,
-  .form-header h2,
+
   .portfolio-button,
   p,
   label,
@@ -781,6 +837,12 @@ p.orange {
   input,
   textarea {
     font-size: 1.2rem;
+  }
+  .nav li a,
+  .section-header h2,
+  .facts-border h2,
+  .form-header h2 {
+    font-size: 1.6rem;
   }
   #headerbox4 img {
     width: 30px;
@@ -806,9 +868,9 @@ p.orange {
     margin-bottom: -15px;
   }
 
-  .seperator {
+  /* .seperator {
     font-size: 20px;
-  }
+  } */
   #headerbox5 h1 {
     font-size: 1.5rem;
   }
@@ -818,10 +880,7 @@ p.orange {
   #headerbox4 img {
     width: 25px;
   }
-  .nav li a,
-  .section-header h2,
-  .facts-border h2,
-  .form-header h2,
+
   .portfolio-button,
   p,
   label,
@@ -830,6 +889,13 @@ p.orange {
   input,
   textarea {
     font-size: 0.9rem;
+  }
+
+  .nav li a,
+  .section-header h2,
+  .facts-border h2,
+  .form-header h2 {
+    font-size: 1.1rem;
   }
   .main-info {
     padding-left: 3%;
@@ -861,19 +927,16 @@ p.orange {
   #headerbox4 ul {
     gap: 10px;
   }
-  .seperator {
+  /* .seperator {
     font-size: 15px;
-  }
+  } */
   #headerbox5 h1 {
     font-size: 1rem;
   }
   .main-info {
     padding-left: 3%;
   }
-  .nav li a,
-  .section-header h2,
-  .facts-border h2,
-  .form-header h2,
+
   .portfolio-button,
   p,
   label,
@@ -881,6 +944,13 @@ p.orange {
   select,
   input,
   textarea {
+    font-size: 0.7rem;
+  }
+
+  .nav li a,
+  .section-header h2,
+  .facts-border h2,
+  .form-header h2 {
     font-size: 0.7rem;
   }
 
@@ -913,9 +983,9 @@ p.orange {
   #headerbox4 ul {
     gap: 10px;
   }
-  .seperator {
+  /* .seperator {
     font-size: 15px;
-  }
+  } */
 
   #headerbox5 h1 {
     font-size: 1rem;
@@ -923,10 +993,7 @@ p.orange {
   .main-info {
     padding-left: 3%;
   }
-  .nav li a,
-  .section-header h2,
-  .facts-border h2,
-  .form-header h2,
+
   .portfolio-button,
   p,
   label,
@@ -934,6 +1001,13 @@ p.orange {
   select,
   input,
   textarea {
+    font-size: 0.5rem;
+  }
+
+  .nav li a,
+  .section-header h2,
+  .facts-border h2,
+  .form-header h2 {
     font-size: 0.6rem;
   }
 
@@ -957,7 +1031,11 @@ p.orange {
     margin-left: 3vw;
   }
 }
+
 @media (max-width: 666px) {
+  .nav li {
+    border-radius: 0 0 10px 10px;
+  }
   /*----------Guestbook----------------*/
   #guestbook,
   #contact {
@@ -974,5 +1052,11 @@ p.orange {
   }
   #contact-info {
     width: 100%;
+  }
+}
+@media (min-width: 1921px) {
+  body {
+    max-width: 1920px;
+    margin: 0;
   }
 }
