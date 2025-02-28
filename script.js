@@ -1,17 +1,24 @@
-console.log("JavaScript körs!");
-
 document.addEventListener("DOMContentLoaded", function () {
   const content = document.getElementById("content");
 
   async function loadPage(page, addToHistory = true) {
+    // 🛠 Förhindra att vi laddar samma sida två gånger i rad
+    if (history.state && history.state.page === page) {
+      console.log(`🔄 ${page} är redan laddad, hoppar över om-laddning.`);
+      return;
+    }
+
     try {
       const response = await fetch(page);
       if (!response.ok) throw new Error("Sidan kunde inte laddas");
       const html = await response.text();
       content.innerHTML = html;
+
       if (addToHistory) {
         history.pushState({ page }, "", page);
       }
+
+      console.log(`✅ Laddade in: ${page}`);
     } catch (error) {
       content.innerHTML = "<p>Fel vid inläsning av sidan.</p>";
     }
@@ -191,124 +198,102 @@ document.addEventListener("DOMContentLoaded", function () {
     initGuestbook();
   }
 });
-/*----------Mail-------------*/
+
+/*----------Kontaktformulär-------------*/
+
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contact-form");
+  const content = document.getElementById("content");
 
-  form.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Förhindrar standardbeteendet (sidladdning)
-
-    const formData = new FormData(form);
-
+  async function loadPage(page, addToHistory = true) {
     try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { Accept: "application/json" },
-      });
+      const response = await fetch(page);
+      if (!response.ok) throw new Error("Sidan kunde inte laddas");
+      const html = await response.text();
+      content.innerHTML = html;
 
-      if (response.ok) {
-        alert("Ditt meddelande har skickats!"); // Bekräftelse till användaren
-        form.reset(); // Töm formuläret efter skickning
-      } else {
-        throw new Error("Något gick fel vid skickandet.");
+      if (addToHistory) {
+        history.pushState({ page }, "", page);
+      }
+
+      // Om kontaktformuläret laddas in, kör initContactForm
+      if (page === "kontakt.html") {
+        setTimeout(initContactForm, 100);
       }
     } catch (error) {
-      alert("Ett fel uppstod: " + error.message);
+      content.innerHTML = "<p>Fel vid inläsning av sidan.</p>";
+    }
+  }
+
+  // Lyssna på klick-händelser för navigationslänkar
+  document.querySelectorAll("a[data-page]").forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      const page = this.getAttribute("data-page");
+      if (page) {
+        loadPage(page);
+      }
+    });
+  });
+
+  window.addEventListener("popstate", function (event) {
+    if (event.state && event.state.page) {
+      loadPage(event.state.page, false);
     }
   });
-});
 
-/*--------------Vädervisare-----------*/
+  // 🛠️ Initiera kontaktformuläret om kontakt.html laddas
+  function initContactForm() {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
 
-// Funktion för att hämta vädret
-function fetchWeatherData() {
-  console.log("Försöker hämta väder...");
+    console.log("✅ Kontaktformuläret hittades och initieras!");
 
-  const apiUrl = "https://api.openweathermap.org/data/2.5/weather";
-  const apiKey = "782c505a0ae937e272fa39f4efffcf53";
-  const lat = "63.25223515574687";
-  const lon = "18.724460092421445";
+    const popup = document.getElementById("confirmation-popup");
+    const closeButton = document.getElementById("close-popup");
 
-  const url = `${apiUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=sv`;
+    // Säkerställ att popupen alltid startar dold
+    popup.classList.add("hidden");
 
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Nätverksrespons var inte ok");
+    // Se till att vi kopplar eventlyssnare på stäng-knappen
+    if (closeButton) {
+      closeButton.removeEventListener("click", closePopup); // Förhindrar dubletter
+      closeButton.addEventListener("click", closePopup);
+    } else {
+      console.error("❌ Stäng-knappen för popupen hittades inte!");
+    }
+
+    function closePopup() {
+      console.log("🔴 Popup stängs!");
+      popup.classList.add("hidden");
+    }
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault(); // Stoppar sidladdning
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+
+        if (response.ok) {
+          console.log("✅ Formulär skickat, visar popup!");
+          popup.classList.remove("hidden"); // Visa popupen
+          form.reset(); // Töm formuläret
+        } else {
+          throw new Error("Fel vid skickandet.");
+        }
+      } catch (error) {
+        alert("Ett fel uppstod: " + error.message);
       }
-      return response.json();
-    })
-    .then((data) => {
-      console.log("API Data:", data);
-
-      const weatherInfo = document.getElementById("weatherInfo");
-      const weatherImage = document.getElementById("weatherImage");
-
-      if (!weatherInfo || !weatherImage) {
-        console.error("Väderelement hittades inte! Väntar på att de laddas...");
-        return;
-      }
-
-      const temperature = data.main.temp;
-      const weatherType = data.weather[0].main;
-
-      weatherInfo.innerHTML = `${temperature}°C.`;
-      // weatherInfo.style.color = temperature < 0 ? "blue" : "red";
-
-      let imageUrl = "";
-      switch (weatherType) {
-        case "Clear":
-          imageUrl = "pics/weather/clear.svg";
-          break;
-        case "Clouds":
-          imageUrl = "pics/weather/cloudy.svg";
-          break;
-        case "Drizzle":
-          imageUrl = "pics/weather/drizzle.svg";
-          break;
-        case "Fog":
-        case "Haze":
-        case "Mist":
-          imageUrl = "pics/weather/foghazemist.svg";
-          break;
-        case "Rain":
-          imageUrl = "pics/weather/rain.svg";
-          break;
-        case "Snow":
-          imageUrl = "pics/weather/snow.svg";
-          break;
-        case "Squall":
-          imageUrl = "pics/weather/squall.svg";
-          break;
-        case "Thunderstorm":
-          imageUrl = "pics/weather/thunder.svg";
-          break;
-        default:
-          imageUrl = "pics/mail.png";
-      }
-
-      weatherImage.src = imageUrl;
-      weatherImage.alt = weatherType;
-    })
-    .catch((error) => {
-      console.error("Det gick inte att hämta väderdata:", error);
     });
-}
+  }
 
-// Lyssna efter när `kontakt.html` laddas in i `#content`
-const observer = new MutationObserver(() => {
-  if (document.getElementById("weatherInfo")) {
-    console.log("Vädersektionen har laddats – hämtar väderdata...");
-    fetchWeatherData();
-    observer.disconnect(); // Stoppa observer när den har hittat väderelementet
+  // 🔹 Om sidan laddas direkt på kontakt.html, kör initContactForm
+  if (window.location.pathname.includes("kontakt.html")) {
+    setTimeout(initContactForm, 100);
   }
 });
-
-// Starta observer på `#content`
-const content = document.getElementById("content");
-if (content) {
-  observer.observe(content, { childList: true, subtree: true });
-} else {
-  console.error("#content hittades inte!");
-}

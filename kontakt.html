@@ -33,11 +33,6 @@
         </li>
       </ul>
     </div>
-    <div id="weather-container">
-      <p class="alias">Domsjö idag</p>
-      <img id="weatherImage" src="" alt="Väderbild" />
-      <p id="weatherInfo">Hämtar väder...</p>
-    </div>
   </div>
   <form
     id="contact-form"
@@ -49,7 +44,7 @@
       <div id="form-column">
         <label class="form-label" for="name">Namn:</label>
         <input type="text" id="namn" name="name" autocomplete="name" required />
-
+        <input type="hidden" name="_captcha" value="true" />
         <label class="form-label" for="email">E-post:</label>
         <input
           type="email"
@@ -63,6 +58,7 @@
     </div>
     <div id="contact-message">
       <label class="form-label" for="contact-message-input">Meddelande:</label>
+      <input type="text" name="_gotcha" style="display: none" />
       <textarea
         id="contact-message-input"
         name="message"
@@ -78,4 +74,8 @@
     </div>
   </form>
 </section>
+<div id="confirmation-popup" class="hidden">
+  <p class="p-blue">Ditt meddelande har skickats!</p>
+  <button id="close-popup">OK</button>
+</div>
 <script src="script.js" defer></script>
