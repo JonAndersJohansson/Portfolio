@@ -91,8 +91,8 @@ textarea {
   position: relative;
   grid-area: headerbox0;
   background: linear-gradient(to bottom, #306181, #416e8a);
-  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3 !important;
-  border-left: clamp(2px, 0.2vw, 5px) solid #477088;
+  box-shadow: 0 -6px 0 #4e7992;
+  border-left: 6px solid #4e7992;
 }
 
 #headerbox1 {
@@ -103,7 +103,8 @@ textarea {
   align-items: center;
   background: linear-gradient(to bottom, #306181, #416e8a);
   border-top-right-radius: 100px;
-  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3 !important;
+  overflow: hidden;
+  box-shadow: 0 -6px 0 #4e7992;
   gap: 1px;
   margin-bottom: -1px;
 }
@@ -883,6 +884,13 @@ p.orange {
   .main-info {
     padding-left: 3%;
   }
+  #headerbox0 {
+    box-shadow: 0 -5px 0 #4e7992;
+    border-left: 5px solid #4e7992;
+  }
+  #headerbox1 {
+    box-shadow: 0 -5px 0 #4e7992;
+  }
 }
 @media (min-width: 575px) and (max-width: 849px) {
   h1 {
@@ -925,6 +933,13 @@ p.orange {
   }
   #knowledge-pic {
     height: clamp(122px, 20vh, 158px);
+  }
+  #headerbox0 {
+    box-shadow: 0 -3px 0 #4e7992;
+    border-left: 3px solid #4e7992;
+  }
+  #headerbox1 {
+    box-shadow: 0 -3px 0 #4e7992;
   }
 }
 
@@ -975,6 +990,13 @@ p.orange {
 
   .entry-content .timestamp {
     margin-bottom: -5px;
+  }
+  #headerbox0 {
+    box-shadow: 0 -2px 0 #4e7992;
+    border-left: 2px solid #4e7992;
+  }
+  #headerbox1 {
+    box-shadow: 0 -2px 0 #4e7992;
   }
 }
 
@@ -1029,6 +1051,13 @@ p.orange {
   }
   .entry-content .entry-message {
     margin-top: -3px;
+  }
+  #headerbox0 {
+    box-shadow: 0 -2px 0 #4e7992;
+    border-left: 2px solid #4e7992;
+  }
+  #headerbox1 {
+    box-shadow: 0 -2px 0 #4e7992;
   }
 
   /*----------Guestbook----------------*/
