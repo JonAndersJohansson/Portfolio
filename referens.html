@@ -35,7 +35,7 @@
     <header class="form-header"><h2>INLÄGG</h2></header>
     <div class="alias-container">
       <label class="form-label" for="name">Alias:</label>
-      <input type="text" id="name" required />
+      <input type="text" id="name" autocomplete="username" required />
     </div>
     <div class="gender-age-container">
       <div class="gender-container">
@@ -49,12 +49,23 @@
       </div>
       <div class="age-container">
         <label class="form-label" for="age">Ålder:</label>
-        <input type="number" id="age" min="0" required />
+        <input
+          type="number"
+          id="age"
+          min="0"
+          autocomplete="bday-day"
+          required
+        />
       </div>
     </div>
     <div class="referece-message-container">
-      <label class="form-label" for="message">Inlägg:</label>
-      <textarea id="reference-message-input" rows="3" required></textarea>
+      <label class="form-label" for="reference-message-input">Inlägg:</label>
+      <textarea
+        id="reference-message-input"
+        rows="3"
+        autocomplete="off"
+        required
+      ></textarea>
     </div>
     <p id="no-contact-text">OBS! Detta är inget kontaktformulär.</p>
     <div class="button-container">

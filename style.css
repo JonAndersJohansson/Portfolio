@@ -11,7 +11,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
-  height: 97vh;
+  /* height: 97vh; */
 }
 
 img {
@@ -93,8 +93,8 @@ textarea {
   position: relative;
   grid-area: headerbox0;
   background: linear-gradient(to bottom, #306181, #416e8a);
-  border-top: clamp(2px, 0.2vw, 5px) solid #5e90a5;
-  border-left: clamp(2px, 0.2vw, 5px) solid #45839e;
+  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3;
+  border-left: clamp(2px, 0.2vw, 5px) solid #477088;
 
   /* box-shadow: -1px -1px 0 0 black; */
 }
@@ -107,7 +107,7 @@ textarea {
   align-items: center;
   background: linear-gradient(to bottom, #306181, #416e8a);
   border-top-right-radius: 100px;
-  border-top: clamp(2px, 0.2vw, 5px) solid #5e90a5;
+  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3;
   gap: 1px;
   margin-bottom: -1px;
 }
@@ -222,7 +222,7 @@ textarea {
 #headerbox7 {
   grid-area: headerbox7;
   margin-left: -0.5px;
-  border-bottom: clamp(1px, 0.2vw, 1.5px) solid black;
+  border-bottom: clamp(1px, 0.2vw, 2px) solid black;
 }
 
 #fname {
@@ -336,6 +336,7 @@ main {
   align-items: flex-start; /* Säkerställer att allt börjar högst upp */
   /* align-items: center; */
   border: clamp(1px, 0.2vw, 2.5px) solid black;
+  /* outline: clamp(1px, 0.2vw, 2.5px) solid black; */
   background-color: #f8f8f8;
   width: 100%;
 }
@@ -398,9 +399,9 @@ p.orange {
   margin: 0 auto;
   background-color: #d76447;
   text-align: right;
-  font-size: 12px;
+  /* font-size: 12px; */
   color: #1a3d4b;
-  padding: 1px 1px 10px 1px;
+  /* padding: 1px 1px 0 0; */
 }
 
 /*<---------------- Referens ---------------------->*/
@@ -432,6 +433,7 @@ p.orange {
   align-items: center;
   width: 100%;
   background: linear-gradient(to bottom, #2f6f8a, #648391);
+  border-bottom: clamp(1px, 0.2vw, 2.5px) solid black;
   padding: 0px;
   border-top: 1px solid #4f88a1;
 }
@@ -519,7 +521,35 @@ p.orange {
   overflow-x: hidden;
   overflow-y: auto;
   padding-right: 20px;
+  /* border: 1px solid #8f8b8b; */
+  margin-right: 1%;
 }
+
+/* background: linear-gradient(to bottom, #2f6f8a, #648391); */
+/* Bredden på scrollbaren */
+#guestbook-entries::-webkit-scrollbar {
+  width: 1vw; /* Justera efter behov */
+}
+
+/* Bakgrund på scroll-spåret (där scrollen rör sig) */
+#guestbook-entries::-webkit-scrollbar-track {
+  background: #a1c1d1; /* Ljus bakgrund */
+  border-radius: 0px;
+  /* border: clamp(1px, 0.2vw, 2.5px) solid black; */
+}
+
+/* Själva scrollbaren (den rörliga delen) */
+#guestbook-entries::-webkit-scrollbar-thumb {
+  background: #2f6f8a; /* Färg på scrollbaren */
+  border-radius: 0px;
+  border: clamp(1px, 0.2vw, 2.5px) solid black;
+}
+
+/* När man hovrar över scrollbaren */
+#guestbook-entries::-webkit-scrollbar-thumb:hover {
+  background: #245d75;
+}
+
 .inline-p {
   display: inline;
 }
@@ -566,10 +596,10 @@ p.orange {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-color: #f8f8f8;
   border: clamp(1px, 0.2vw, 2.5px) solid black;
-  padding: 20px;
+  padding: 2%;
   align-items: center;
 }
 
@@ -579,7 +609,8 @@ p.orange {
 }
 .portfolio-ul {
   list-style: none;
-  padding: 0%;
+  padding: 0;
+  margin: 2% 0 0 0;
 }
 .portfolio-ul li {
   display: flex;
@@ -595,9 +626,11 @@ p.orange {
   justify-content: center;
   flex-shrink: 0;
   width: 5vw;
+  max-width: 96px;
+  max-height: 96px;
   height: auto;
   aspect-ratio: 1/1; /* Fyrkantig */
-  border: 0.45vw solid #2f6f8a;
+  border: clamp(2px, 0.45vw, 8px) solid #2f6f8a;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -608,6 +641,8 @@ p.orange {
 .github-icon {
   position: absolute;
   width: 5vw;
+  max-width: 80px;
+  max-height: 80px;
   aspect-ratio: 1 / 1;
   margin-bottom: -18%;
 }
@@ -615,16 +650,18 @@ p.orange {
 #cv-icon {
   position: absolute;
   width: 5vw;
+  max-width: 80px;
+  max-height: 80px;
   aspect-ratio: 1 / 1;
 }
 
 /*-------------Kunskap-----------------------------*/
 #knowledge {
   width: 100%;
-  max-height: 100vh;
+  /* max-height: 30vh; */
   background-color: #f8f8f8;
   border: clamp(1px, 0.2vw, 2.5px) solid black;
-  padding: 20px;
+  padding: 2%;
 }
 #knowledge .p-blue {
   text-align: center; /* Centrerar texten inuti */
@@ -635,19 +672,17 @@ p.orange {
 #text-and-img {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  margin-top: 20px;
-  justify-content: space-evenly;
+  max-width: 100%;
+  /* margin: 0 auto; */
+  margin-top: 1%;
+  justify-content: center;
   align-items: center;
 }
 #knowledge-text {
-  border: 3px solid red;
-  box-shadow: 0 0 0 6px blue;
-  outline: 3px solid green;
-  /* filter: drop-shadow(0px 0px 1px black); */
+  margin: -3% 0;
 }
 #knowledge-text p {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 #knowledge-text ul {
@@ -656,24 +691,34 @@ p.orange {
 }
 #knowledge-text ul li {
   position: relative;
-  font-size: 2rem;
-  padding-left: 55px; /* Skapar utrymme för symbolen */
+  font-size: clamp(0.8rem, 1.8vw, 2rem);
+  padding-left: 2em; /* Skapar utrymme för symbolen */
 }
 #knowledge-text ul li::before {
   content: "</>";
   position: absolute;
   left: 0;
-  font-size: 2rem;
+  font-size: clamp(0.8rem, 1.8vw, 2rem);
   color: #2f6f8a;
   font-weight: bold;
 }
 
 #knowledge-pic {
   display: flex;
-  width: 23vw;
-  height: auto;
+  /* width: clamp(122px, 32vh, 614px); */
+  height: clamp(122px, 30vh, 322px);
   object-fit: contain;
+  padding-left: 10%;
 }
+/* #knowledge-pic {
+  display: block;
+  flex-grow: 1; 
+  width: clamp(122px, 32vh, 614px);
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  padding-left: 10%;
+} */
 
 /*-------------Kontakt-----------------------------*/
 
@@ -685,84 +730,6 @@ p.orange {
   background-color: #f8f8f8;
   border: clamp(1px, 0.2vw, 2.5px) solid black;
   padding: 20px;
-}
-
-#contact-info {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-.contact-details {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
-#contact-ul {
-  list-style: none;
-  padding: 0%;
-}
-#contact-ul li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.contact-button {
-  position: relative; /* Gör att barn kan positioneras fritt */
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  width: 5vw;
-  height: auto;
-  aspect-ratio: 1/1; /* Fyrkantig */
-  border: 0.45vw solid #2f6f8a;
-  border-radius: 50%;
-}
-
-#phone-icon {
-  position: absolute;
-  width: 5vw;
-  aspect-ratio: 1 / 1;
-}
-#mail-icon {
-  position: absolute;
-  width: 5vw;
-  aspect-ratio: 1 / 1;
-}
-#linkedin-button {
-  cursor: pointer;
-}
-#linkedin-button:hover {
-  border: 0.25vw solid #2f6f8a;
-}
-#linkedin-icon {
-  position: absolute;
-  width: 5vw;
-  aspect-ratio: 1 / 1;
-  color: #2f6f8a;
-}
-.margin-p {
-  margin-left: 3%;
-  display: inline;
-}
-#weather-container {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  padding: 10px;
-  width: 200px;
-  margin-bottom: 20px;
-}
-#weather-container p {
-  align-self: center;
-}
-
-#weatherImage {
-  width: 4vw;
-  align-self: center;
-  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2)); /* Svag skugga */
 }
 
 #contact-form {
@@ -797,11 +764,98 @@ p.orange {
 
 #mail-pic {
   display: flex;
-  align-self: center;
+  align-self: flex-end;
   justify-self: center;
-  padding-left: 1%;
-  width: 8vw;
+  padding-left: 2%;
+  width: 25%;
   height: auto;
+  max-height: 158px;
+  max-width: 142px;
+}
+#contact-info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.contact-details {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+#contact-ul {
+  list-style: none;
+  padding: 0%;
+}
+#contact-ul li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-button {
+  position: relative; /* Gör att barn kan positioneras fritt */
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 5vw;
+  height: auto;
+  max-height: 96px;
+  max-width: 96px;
+  aspect-ratio: 1/1; /* Fyrkantig */
+  border: clamp(2px, 0.45vw, 8px) solid #2f6f8a;
+  border-radius: 50%;
+}
+
+#phone-icon {
+  position: absolute;
+  width: 5vw;
+  max-height: 80px;
+  max-width: 80px;
+  aspect-ratio: 1 / 1;
+}
+#mail-icon {
+  position: absolute;
+  width: 5vw;
+  max-height: 80px;
+  max-width: 80px;
+  aspect-ratio: 1 / 1;
+}
+#linkedin-button {
+  cursor: pointer;
+}
+#linkedin-button:hover {
+  border: 0.25vw solid #2f6f8a;
+}
+#linkedin-icon {
+  position: absolute;
+  width: 5vw;
+  max-height: 80px;
+  max-width: 80px;
+  aspect-ratio: 1 / 1;
+  color: #2f6f8a;
+}
+.margin-p {
+  margin-left: 3%;
+  display: inline;
+}
+#weather-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding: 10px;
+  width: 200px;
+  margin-bottom: 20px;
+}
+#weather-container p {
+  align-self: center;
+}
+
+#weatherImage {
+  width: 4vw;
+  align-self: center;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2)); /* Svag skugga */
 }
 
 /*<---------------- Media queries ---------------------->*/
@@ -850,13 +904,6 @@ p.orange {
   .main-info {
     padding-left: 3%;
   }
-  #knowledge-text ul li {
-    font-size: 1.5rem;
-    padding-left: 40px;
-  }
-  #knowledge-text ul li::before {
-    font-size: 1.5rem;
-  }
 }
 @media (min-width: 575px) and (max-width: 849px) {
   h1 {
@@ -900,12 +947,8 @@ p.orange {
   .main-info {
     padding-left: 3%;
   }
-  #knowledge-text ul li {
-    font-size: 1rem;
-    padding-left: 30px;
-  }
-  #knowledge-text ul li::before {
-    font-size: 1rem;
+  #knowledge-pic {
+    height: clamp(122px, 20vh, 158px);
   }
 }
 
@@ -953,13 +996,8 @@ p.orange {
   .form-header h2 {
     font-size: 0.7rem;
   }
-
-  #knowledge-text ul li {
-    font-size: 0.9rem;
-    padding-left: 25px;
-  }
-  #knowledge-text ul li::before {
-    font-size: 0.9rem;
+  #knowledge-pic {
+    height: clamp(122px, 20vh, 158px);
   }
 }
 
@@ -1010,21 +1048,17 @@ p.orange {
   .form-header h2 {
     font-size: 0.6rem;
   }
+  #knowledge-pic {
+    height: clamp(122px, 20vh, 158px);
+  }
 
-  #knowledge-text ul li {
-    font-size: 0.8rem;
-    padding-left: 25px;
-  }
-  #knowledge-text ul li::before {
-    font-size: 0.8rem;
-  }
   /*----------Guestbook----------------*/
   #guestbook-entries {
     min-width: 250px;
   }
 }
-
-@media (min-width: 666px) and (max-width: 1024px) {
+/* (min-width: 666px) and */
+@media (max-width: 1024px) {
   .container {
     margin-top: 3vh;
     width: 91vw;
@@ -1055,8 +1089,18 @@ p.orange {
   }
 }
 @media (min-width: 1921px) {
-  body {
+  /* body {
     max-width: 1920px;
     margin: 0;
+  } */
+  .container {
+    max-width: 1920px;
+    margin: 10vh auto;
+  }
+}
+
+@media (max-height: 400px) {
+  .nav {
+    padding-bottom: 1.8%;
   }
 }

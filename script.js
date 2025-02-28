@@ -1,3 +1,5 @@
+console.log("JavaScript körs!");
+
 document.addEventListener("DOMContentLoaded", function () {
   const content = document.getElementById("content");
 
@@ -189,16 +191,33 @@ document.addEventListener("DOMContentLoaded", function () {
     initGuestbook();
   }
 });
-/*----------Fake mail-------------*/
-function skickaForm(event) {
-  event.preventDefault(); // Stoppa formuläret från att ladda om sidan
+/*----------Mail-------------*/
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
 
-  // Simulera att formuläret skickas
-  alert("Meddelandet har skickats!");
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault(); // Förhindrar standardbeteendet (sidladdning)
 
-  // Rensa fälten efter "skickning"
-  document.getElementById("kontaktform").reset();
-}
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        alert("Ditt meddelande har skickats!"); // Bekräftelse till användaren
+        form.reset(); // Töm formuläret efter skickning
+      } else {
+        throw new Error("Något gick fel vid skickandet.");
+      }
+    } catch (error) {
+      alert("Ett fel uppstod: " + error.message);
+    }
+  });
+});
 
 /*--------------Vädervisare-----------*/
 

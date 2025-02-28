@@ -41,27 +41,33 @@
   </div>
   <form
     id="contact-form"
-    onsubmit="skickaForm(event)"
+    action="https://formspree.io/f/mpwqvavy"
     method="post"
-    enctype="text/plain"
   >
     <header class="form-header"><h2>KONTAKTFORMULÄR</h2></header>
     <div id="contact-input">
       <div id="form-column">
-        <label class="form-label" for="namn">Namn:</label>
-        <input type="text" id="namn" name="namn" required />
+        <label class="form-label" for="name">Namn:</label>
+        <input type="text" id="namn" name="name" autocomplete="name" required />
 
         <label class="form-label" for="email">E-post:</label>
-        <input type="email" id="email" name="email" required />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="email"
+          required
+        />
       </div>
       <img id="mail-pic" src="pics/mail.png" />
     </div>
     <div id="contact-message">
-      <label class="form-label" for="meddelande">Meddelande:</label>
+      <label class="form-label" for="contact-message-input">Meddelande:</label>
       <textarea
         id="contact-message-input"
-        name="meddelande"
+        name="message"
         rows="3"
+        autocomplete="off"
         required
       ></textarea>
     </div>
