@@ -91,7 +91,7 @@ textarea {
   position: relative;
   grid-area: headerbox0;
   background: linear-gradient(to bottom, #306181, #416e8a);
-  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3;
+  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3 !important;
   border-left: clamp(2px, 0.2vw, 5px) solid #477088;
 }
 
@@ -103,7 +103,7 @@ textarea {
   align-items: center;
   background: linear-gradient(to bottom, #306181, #416e8a);
   border-top-right-radius: 100px;
-  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3;
+  border-top: clamp(2px, 0.2vw, 5px) solid #5a88a3 !important;
   gap: 1px;
   margin-bottom: -1px;
 }
@@ -122,7 +122,7 @@ textarea {
 }
 #headerbox3 {
   grid-area: headerbox3;
-  border-top: clamp(1px, 0.2vw, 2.5px) solid #45839e;
+  border-top: clamp(1px, 0.2vw, 2.5px) solid #4b7993;
   box-shadow: 0 -1px 0 0 #255870;
   background: linear-gradient(to bottom, #265870, #33607f);
   width: 3vw;
@@ -192,7 +192,7 @@ textarea {
   align-self: flex-end;
   padding: 0 0.5%;
   background: linear-gradient(to bottom, #265870, #33607f);
-  border-right: clamp(1px, 0.2vw, 1.5px) solid #000000;
+  border-right: clamp(1px, 0.2vw, 1.5px) solid #1f4a5e;
   border-bottom: clamp(1px, 0.2vw, 2.5px) solid #000000;
   border-top: clamp(1px, 0.2vw, 2.5px) solid #4b7993;
 }
@@ -210,8 +210,6 @@ textarea {
 }
 #headerbox7 {
   grid-area: headerbox7;
-  margin-left: -0.5px;
-  border-bottom: clamp(1px, 0.2vw, 2px) solid black;
 }
 
 #fname {
@@ -460,7 +458,7 @@ p.orange {
 }
 #gender,
 #age {
-  margin-left: 5%;
+  margin-left: 0.5em;
 }
 
 .button-container {
@@ -896,9 +894,6 @@ p.orange {
     margin-bottom: -15px;
   }
 
-  /* .seperator {
-    font-size: 20px;
-  } */
   #headerbox5 h1 {
     font-size: 1.5rem;
   }
@@ -977,6 +972,10 @@ p.orange {
   #knowledge-pic {
     height: clamp(122px, 20vh, 158px);
   }
+
+  .entry-content .timestamp {
+    margin-bottom: -5px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -1023,7 +1022,13 @@ p.orange {
     font-size: 0.6rem;
   }
   #knowledge-pic {
-    height: clamp(122px, 20vh, 158px);
+    height: clamp(110px, 20vh, 110px);
+  }
+  .entry-content .timestamp {
+    margin-bottom: -8px;
+  }
+  .entry-content .entry-message {
+    margin-top: -3px;
   }
 
   /*----------Guestbook----------------*/
